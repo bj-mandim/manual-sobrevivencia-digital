@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-sans text-gray-800 bg-white;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display;
+  }
+}
+
+@layer components {
+  .btn-danger {
+    @apply flex items-center gap-2 bg-brand-red hover:bg-red-700 text-white font-bold px-5 py-3 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-offset-2;
+  }
+
+  .btn-success {
+    @apply flex items-center gap-2 bg-brand-green hover:bg-teal-700 text-white font-bold px-5 py-3 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-teal-400 focus:ring-offset-2;
+  }
+
+  .section-title {
+    @apply text-2xl sm:text-3xl font-display font-bold text-navy;
+  }
+
+  .card-base {
+    @apply bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow duration-200;
+  }
+}
+
+@layer utilities {
+  .text-brand-gradient {
+    @apply bg-gradient-to-r from-brand-green to-teal-400 bg-clip-text text-transparent;
+  }
+
+  .bg-navy-gradient {
+    background: linear-gradient(135deg, #0F2547 0%, #1a3a6b 100%);
+  }
+}
+
+/* Print styles for emergency checklist */
+@media print {
+  header,
+  footer,
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    font-size: 12pt;
+    color: #000;
+  }
+
+  .print-break {
+    page-break-before: always;
+  }
+}

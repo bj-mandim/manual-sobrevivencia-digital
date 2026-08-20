@@ -1,0 +1,68 @@
+import { Situacao } from '../types'
+
+export const situacoes: Situacao[] = [
+  {
+    id: 'ligacao',
+    label: 'Recebi uma ligação suspeita',
+    iconName: 'Phone',
+    corFundo: 'bg-blue-100',
+    corIcone: 'text-blue-600',
+    golpeSlug: 'phishing',
+  },
+  {
+    id: 'link',
+    label: 'Cliquei em um link',
+    iconName: 'Link2',
+    corFundo: 'bg-purple-100',
+    corIcone: 'text-purple-600',
+    golpeSlug: 'phishing',
+  },
+  {
+    id: 'pix',
+    label: 'Fizeram uma transferência pelo meu Pix',
+    iconName: 'CircleDollarSign',
+    corFundo: 'bg-green-100',
+    corIcone: 'text-green-600',
+    golpeSlug: 'pix',
+  },
+  {
+    id: 'whatsapp',
+    label: 'Meu WhatsApp foi invadido',
+    iconName: 'MessageCircle',
+    corFundo: 'bg-emerald-100',
+    corIcone: 'text-emerald-600',
+    golpeSlug: 'whatsapp',
+  },
+  {
+    id: 'rede-social',
+    label: 'Roubaram minha rede social',
+    iconName: 'Share2',
+    corFundo: 'bg-pink-100',
+    corIcone: 'text-pink-600',
+    golpeSlug: 'redes-sociais',
+  },
+  {
+    id: 'conta',
+    label: 'Perdi acesso a uma conta',
+    iconName: 'UserX',
+    corFundo: 'bg-slate-100',
+    corIcone: 'text-slate-600',
+    golpeSlug: 'redes-sociais',
+  },
+  {
+    id: 'emprego',
+    label: 'Recebi uma proposta de emprego suspeita',
+    iconName: 'Briefcase',
+    corFundo: 'bg-orange-100',
+    corIcone: 'text-orange-600',
+    golpeSlug: 'emprego',
+  },
+  {
+    id: 'deepfake',
+    label: 'Alguém está usando minha imagem ou voz',
+    iconName: 'ScanFace',
+    corFundo: 'bg-teal-100',
+    corIcone: 'text-teal-600',
+    golpeSlug: 'deepfake',
+  },
+]

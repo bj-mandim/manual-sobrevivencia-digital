@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Shield, Users, BookOpen, Target, ArrowRight } from 'lucide-react'
+import { Shield, Users, BookOpen, Target, ArrowRight, Linkedin, Instagram } from 'lucide-react'
 
 const fases = [
   {
@@ -28,11 +28,43 @@ const fases = [
   },
 ]
 
-const equipe = [
-  { nome: 'Beatriz', funcao: 'Pesquisa Estatística & Relação Institucional' },
-  { nome: 'Emilly', funcao: 'Análise Técnica de Cibersegurança & Engenharia Social' },
-  { nome: 'Jéssica', funcao: 'Guias de Prevenção & Planos de Contenção' },
-  { nome: 'Beatriz Negrão', funcao: 'Desenvolvimento Web, UX/UI & Mídia' },
+export interface MembroEquipe {
+  nome: string
+  funcao: string
+  foto?: string // Caminho ou URL da foto (ex: '/equipe/beatriz.jpg' ou link web)
+  linkedin?: string // URL do perfil no LinkedIn
+  instagram?: string // URL do perfil no Instagram
+}
+
+const equipe: MembroEquipe[] = [
+  {
+    nome: 'Beatriz',
+    funcao: 'Pesquisa Estatística & Relação Institucional',
+    foto: '', // Insira a foto aqui
+    linkedin: '', // Insira o LinkedIn aqui
+    instagram: '', // Insira o Instagram aqui
+  },
+  {
+    nome: 'Emilly',
+    funcao: 'Análise Técnica de Cibersegurança & Engenharia Social',
+    foto: '',
+    linkedin: '',
+    instagram: '',
+  },
+  {
+    nome: 'Jéssica',
+    funcao: 'Guias de Prevenção & Planos de Contenção',
+    foto: '',
+    linkedin: '',
+    instagram: '',
+  },
+  {
+    nome: 'Beatriz Negrão',
+    funcao: 'Desenvolvimento Web, UX/UI & Mídia',
+    foto: '',
+    linkedin: '',
+    instagram: '',
+  },
 ]
 
 export const Sobre = () => {
@@ -95,20 +127,79 @@ export const Sobre = () => {
         </section>
 
         {/* Team */}
-        <section>
+        <section aria-label="Equipe do projeto">
           <h2 className="section-title mb-7">A Equipe</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             {equipe.map((membro) => (
               <div
                 key={membro.nome}
-                className="bg-white rounded-xl border border-gray-100 shadow-sm p-5 flex items-center gap-4"
+                className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 flex flex-col sm:flex-row items-center sm:items-start gap-4 transition-all hover:shadow-md hover:border-cyan-500/20"
               >
-                <div className="w-12 h-12 rounded-full bg-black border border-cyan-500/30 flex items-center justify-center shrink-0">
-                  <span className="text-cyan-400 font-bold text-lg">{membro.nome[0]}</span>
+                {/* Foto / Avatar */}
+                <div className="w-20 h-20 rounded-2xl overflow-hidden shrink-0 bg-black border-2 border-cyan-500/30 flex items-center justify-center shadow-inner relative group">
+                  {membro.foto ? (
+                    <img
+                      src={membro.foto}
+                      alt={`Foto de ${membro.nome}`}
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        (e.target as HTMLElement).style.display = 'none'
+                      }}
+                    />
+                  ) : (
+                    <span className="text-cyan-400 font-display font-black text-2xl select-none" aria-hidden="true">
+                      {membro.nome.charAt(0)}
+                    </span>
+                  )}
                 </div>
-                <div>
-                  <p className="font-bold text-black text-sm">{membro.nome}</p>
-                  <p className="text-xs text-gray-500 leading-snug mt-0.5">{membro.funcao}</p>
+
+                {/* Dados & Redes */}
+                <div className="flex-1 text-center sm:text-left">
+                  <h3 className="font-display font-bold text-black text-base sm:text-lg leading-tight">
+                    {membro.nome}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-gray-500 leading-snug mt-1">
+                    {membro.funcao}
+                  </p>
+
+                  {/* Redes Sociais */}
+                  <div className="flex items-center justify-center sm:justify-start gap-2 mt-3.5">
+                    {membro.linkedin ? (
+                      <a
+                        href={membro.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`LinkedIn de ${membro.nome}`}
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gray-50 hover:bg-black text-gray-700 hover:text-cyan-400 text-xs font-semibold border border-gray-200 hover:border-cyan-500/40 transition-all focus:outline-none focus:ring-2 focus:ring-cyan-400"
+                      >
+                        <Linkedin className="w-3.5 h-3.5" aria-hidden="true" />
+                        <span>LinkedIn</span>
+                      </a>
+                    ) : (
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gray-50/70 text-gray-400 text-xs font-medium border border-gray-200/60 cursor-default" title="LinkedIn em breve">
+                        <Linkedin className="w-3.5 h-3.5" aria-hidden="true" />
+                        <span>LinkedIn</span>
+                      </span>
+                    )}
+
+                    {membro.instagram ? (
+                      <a
+                        href={membro.instagram}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`Instagram de ${membro.nome}`}
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gray-50 hover:bg-black text-gray-700 hover:text-cyan-400 text-xs font-semibold border border-gray-200 hover:border-cyan-500/40 transition-all focus:outline-none focus:ring-2 focus:ring-cyan-400"
+                      >
+                        <Instagram className="w-3.5 h-3.5" aria-hidden="true" />
+                        <span>Instagram</span>
+                      </a>
+                    ) : (
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gray-50/70 text-gray-400 text-xs font-medium border border-gray-200/60 cursor-default" title="Instagram em breve">
+                        <Instagram className="w-3.5 h-3.5" aria-hidden="true" />
+                        <span>Instagram</span>
+                      </span>
+                    )}
+                  </div>
                 </div>
               </div>
             ))}

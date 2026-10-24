@@ -283,6 +283,7 @@ export const golpes: Golpe[] = [
       'Em caso de pedido de dinheiro urgente, encerre e ligue de volta para o número conhecido',
       'Faça perguntas que só o familiar real saberia responder',
       'Reduza publicações de áudios longos e vídeos nas redes sociais',
+      'Em casos de montagens íntimas, utilize o StopNCII.org e Take It Down para bloquear o conteúdo e acione o Ligue 180',
     ],
     estatistica: 'Golpes com deepfake de voz cresceram 3.000% em 2023 com a popularização de ferramentas de IA.',
   },
@@ -309,7 +310,7 @@ export const golpes: Golpe[] = [
     ],
     comoEvitar: [
       'Antes de compartilhar, pesquise o título no Google acompanhado das palavras "é verdade" ou "fato ou fake"',
-      'Consulte agências de checagem confiáveis (Fato ou Fake, Aos Fatos, Agência Lupa, UOL Confere)',
+      'Consulte agências de checagem confiáveis (Fato ou Boato da Justiça Eleitoral, Agência Lupa, Aos Fatos, G1 Fato ou Fake)',
       'Desconfie de áudios e textos sem identificação autêntica recebidos no WhatsApp',
       'Confira se veículos de imprensa estabelecidos também noticiaram o fato',
       'Interrompa a corrente: não repasse mensagens duvidosas para amigos e familiares',

@@ -217,7 +217,7 @@ export const fasesPorSituacao: Record<string, FaseContencao[]> = {
           id: 'lnk-12',
           texto: 'Consulte gratuitamente o seu CPF no Registrato do Banco Central',
           complemento: 'O Registrato é um site oficial e gratuito do Banco Central onde você pode conferir se alguém tentou abrir contas ou fazer empréstimos no seu nome.',
-          link: { label: 'Acessar o Registrato do Banco Central', url: 'https://registrato.bcb.gov.br' },
+          link: { label: 'Acessar o Registrato do Banco Central', url: 'https://www.bcb.gov.br/meubc/registrato' },
         },
       ],
     },
@@ -238,6 +238,7 @@ export const fasesPorSituacao: Record<string, FaseContencao[]> = {
           id: 'px-1',
           texto: 'Abra o app do seu banco e clique em "Contestar / Relatar Problema no Pix"',
           complemento: 'Essa ferramenta se chama MED (Mecanismo Especial de Devolução do Banco Central). Ela avisa o banco de quem recebeu o dinheiro para congelar o saldo da conta do golpista imediatamente.',
+          link: { label: 'Página Oficial do Banco Central sobre o MED (Devolução do Pix)', url: 'https://www.bcb.gov.br/estabilidadefinanceira/mecanismoespecialdevolucao' },
         },
         {
           id: 'px-2',
@@ -624,7 +625,7 @@ export const fasesPorSituacao: Record<string, FaseContencao[]> = {
           id: 'cnt-7',
           texto: 'Se a conta invadida foi o Gov.br: Consulte o Registrato do Banco Central',
           complemento: 'Com a conta Gov.br, golpistas podem tentar abrir contas digitais em bancos. Entre no Registrato e confira o relatório de contas e empréstimos.',
-          link: { label: 'Consultar Registrato do Banco Central', url: 'https://registrato.bcb.gov.br' },
+          link: { label: 'Consultar Registrato do Banco Central', url: 'https://www.bcb.gov.br/meubc/registrato' },
         },
         {
           id: 'cnt-8',
@@ -714,7 +715,7 @@ export const fasesPorSituacao: Record<string, FaseContencao[]> = {
           id: 'emp-5',
           texto: 'Monitore seu CPF no Registrato do Banco Central gratuitamente',
           complemento: 'Consulte o relatório de contas (CCS) e empréstimos (SCR) para ter certeza de que nenhuma conta digital foi aberta com seus documentos.',
-          link: { label: 'Consultar Registrato do Banco Central', url: 'https://registrato.bcb.gov.br' },
+          link: { label: 'Consultar Registrato do Banco Central', url: 'https://www.bcb.gov.br/meubc/registrato' },
         },
         {
           id: 'emp-6',
@@ -856,9 +857,12 @@ export const fasesPorSituacao: Record<string, FaseContencao[]> = {
         },
         {
           id: 'dp-9',
-          texto: 'Use as ferramentas mundiais de bloqueio de imagens íntimas (TakeItDown / StopNCII)',
-          complemento: 'Para menores de 18 anos, use o Take It Down. Para adultos, use o StopNCII.org. Elas criam um código seguro que impede a foto ou vídeo de ser postado na maioria das redes sociais.',
-          link: { label: 'Take It Down (Menores de 18 anos)', url: 'https://takeitdown.nii.org' },
+          texto: 'Use as ferramentas mundiais de bloqueio de imagens íntimas (StopNCII / Take It Down)',
+          complemento: 'Para adultos (18+), utilize o StopNCII.org. Para menores de 18 anos, use o Take It Down. Elas geram um código criptográfico (hash) direto do seu aparelho, sem nunca enviar as suas fotos/vídeos originais, impedindo que sejam publicadas em redes como Instagram, Facebook, TikTok e outras plataformas parceiras.',
+          links: [
+            { label: 'StopNCII.org (Para Adultos / 18+)', url: 'https://stopncii.org/' },
+            { label: 'Take It Down (Para Menores de 18 anos — NCMEC)', url: 'https://takeitdown.ncmec.org/' },
+          ],
         },
       ],
     },
@@ -879,8 +883,12 @@ export const fasesPorSituacao: Record<string, FaseContencao[]> = {
         },
         {
           id: 'dp-11',
-          texto: 'Em casos envolvendo violência contra a mulher: Procure a DEAM',
-          complemento: 'A Delegacia da Mulher atua com medidas protetivas de urgência da Lei Maria da Penha para conter abusos e perseguições digitais.',
+          texto: 'Em casos envolvendo violência contra a mulher: Procure a DEAM e o Ligue 180',
+          complemento: 'A Delegacia Especializada de Atendimento à Mulher (DEAM) atua com medidas protetivas de urgência da Lei Maria da Penha para conter abusos e perseguições digitais. A Central Ligue 180 presta atendimento gratuito 24h por dia e conta também com canal de WhatsApp oficial.',
+          links: [
+            { label: 'Central de Atendimento à Mulher — Ligue 180 (Gov.br)', url: 'https://www.gov.br/mulheres/pt-br/ligue180' },
+            { label: 'WhatsApp Oficial do Ligue 180: (61) 9610-0180', url: 'https://wa.me/556196100180' },
+          ],
         },
         {
           id: 'dp-12',
@@ -1080,7 +1088,7 @@ export const fasesPorSituacao: Record<string, FaseContencao[]> = {
           id: 'inv-9',
           texto: 'Se enviou foto do documento (RG/CPF) para a plataforma, monitore seu CPF no Registrato',
           complemento: 'Consulte o Registrato do Banco Central para verificar se não abriram contas ou solicitaram empréstimos no seu nome.',
-          link: { label: 'Acessar o Registrato do Banco Central', url: 'https://registrato.bcb.gov.br' },
+          link: { label: 'Acessar o Registrato do Banco Central', url: 'https://www.bcb.gov.br/meubc/registrato' },
         },
         {
           id: 'inv-10',
@@ -1228,7 +1236,10 @@ export const fasesPorSituacao: Record<string, FaseContencao[]> = {
           id: 'op-4',
           texto: 'Para pendências fiscais ou CPF: acesse o portal e-CAC da Receita Federal',
           complemento: 'Consulte a situação do seu CPF de forma gratuita e segura diretamente no site oficial da Receita Federal.',
-          link: { label: 'Portal Oficial e-CAC Receita Federal', url: 'https://cav.receita.fazenda.gov.br' },
+          links: [
+            { label: 'Portal Oficial e-CAC (Receita Federal)', url: 'https://cav.receita.fazenda.gov.br/autenticacao/login' },
+            { label: 'Página da Receita Federal (Gov.br)', url: 'https://www.gov.br/receitafederal/pt-br' },
+          ],
         },
       ],
     },
@@ -1409,9 +1420,14 @@ export const fasesPorSituacao: Record<string, FaseContencao[]> = {
         },
         {
           id: 'fn-5',
-          texto: 'Consulte os portais de checagem confiáveis',
-          complemento: 'Acesse Agência Lupa, Aos Fatos, Fato ou Fake (G1), UOL Confere ou o portal oficial de boatos do Governo Federal (gov.br/brasilcontrafake).',
-          link: { label: 'Acessar Brasil Contra Fake (Gov.br)', url: 'https://www.gov.br/secom/pt-br/assuntos/brasilcontrafake' },
+          texto: 'Consulte os portais de checagem confiáveis e oficiais',
+          complemento: 'Antes de acreditar ou repassar, verifique se a notícia já foi desmentida em agências de checagem profissionais e no portal oficial da Justiça Eleitoral.',
+          links: [
+            { label: 'Fato ou Boato (Portal Oficial da Justiça Eleitoral)', url: 'https://www.justicaeleitoral.jus.br/fato-ou-boato/' },
+            { label: 'Agência Lupa (Checagem de Fatos)', url: 'https://www.agencialupa.org/' },
+            { label: 'Aos Fatos (Verificação de Notícias)', url: 'https://aosfatos.org/' },
+            { label: 'G1 Fato ou Fake', url: 'https://g1.globo.com/fato-ou-fake/' },
+          ],
         },
       ],
     },
@@ -1585,7 +1601,7 @@ export const fasesPadrao: FaseContencao[] = [
         id: 'r4',
         texto: 'Consulte gratuitamente o seu CPF no Registrato do Banco Central',
         complemento: 'Confira se não abriram contas ou empréstimos indevidos no seu nome.',
-        link: { label: 'Acessar o Registrato do Banco Central', url: 'https://registrato.bcb.gov.br' },
+        link: { label: 'Acessar o Registrato do Banco Central', url: 'https://www.bcb.gov.br/meubc/registrato' },
       },
       {
         id: 'r5',

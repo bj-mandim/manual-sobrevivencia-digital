@@ -35,11 +35,17 @@ export interface Situacao {
   videoUrl?: string
 }
 
+export interface ChecklistLink {
+  label: string
+  url: string
+}
+
 export interface ChecklistItemType {
   id: string
   texto: string
   complemento?: string
-  link?: { label: string; url: string }
+  link?: ChecklistLink
+  links?: ChecklistLink[]
 }
 
 export interface FaseContencao {

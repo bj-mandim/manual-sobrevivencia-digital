@@ -55,23 +55,35 @@ export const Footer = () => {
             <ul className="space-y-2">
               {[
                 {
-                  label: "Delegacias Eletrônicas",
+                  label: "Delegacias Eletrônicas (SaferNet)",
                   url: "https://new.safernet.org.br/content/delegacias-cibercrimes",
                 },
                 {
-                  label: "BACEN — Registrar Reclamação",
+                  label: "BACEN — Consultar Registrato",
+                  url: "https://www.bcb.gov.br/meubc/registrato",
+                },
+                {
+                  label: "BACEN — Reclamações & MED do Pix",
                   url: "https://www.bcb.gov.br/meubc/fazerreclamacao",
                 },
                 {
-                  label: "Consumidor.gov",
+                  label: "Central da Mulher — Ligue 180 (Gov.br)",
+                  url: "https://www.gov.br/mulheres/pt-br/ligue180",
+                },
+                {
+                  label: "Justiça Eleitoral — Fato ou Boato",
+                  url: "https://www.justicaeleitoral.jus.br/fato-ou-boato/",
+                },
+                {
+                  label: "StopNCII.org — Bloqueio de Imagens",
+                  url: "https://stopncii.org/",
+                },
+                {
+                  label: "Consumidor.gov.br",
                   url: "https://www.consumidor.gov.br",
                 },
                 {
-                  label: "Serasa — Consultar CPF",
-                  url: "https://www.serasa.com.br",
-                },
-                {
-                  label: "CVM — Verificar Investimentos",
+                  label: "CVM — Canal do Cidadão",
                   url: "https://www.cvm.gov.br",
                 },
               ].map(({ label, url }) => (

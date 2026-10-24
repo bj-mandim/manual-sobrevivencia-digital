@@ -445,20 +445,40 @@ export const FuiVitima = () => {
                               </p>
                             )}
                             {item.link && (
-                              <div className="mt-1">
+                              <div className="mt-1.5">
                                 <a
                                   href={item.link.url}
                                   target="_blank"
                                   rel="noopener noreferrer"
-                                  className="inline-flex items-center gap-1 text-xs font-semibold text-cyan-600 hover:text-cyan-700 hover:underline print:text-[10px] print:text-gray-900 print:font-bold"
+                                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-cyan-600 hover:text-cyan-700 hover:underline print:text-[10px] print:text-gray-900 print:font-bold"
                                   onClick={(e) => e.stopPropagation()}
                                 >
-                                  <ExternalLink className="w-3 h-3 no-print" />
+                                  <ExternalLink className="w-3.5 h-3.5 no-print shrink-0" aria-hidden="true" />
                                   <span className="no-print">{item.link.label}</span>
                                   <span className="hidden print:inline">
                                     {item.link.label} — (Acesse: {item.link.url})
                                   </span>
                                 </a>
+                              </div>
+                            )}
+                            {item.links && item.links.length > 0 && (
+                              <div className="mt-2 flex flex-wrap gap-2">
+                                {item.links.map((lnk, lIdx) => (
+                                  <a
+                                    key={lIdx}
+                                    href={lnk.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center gap-1 text-xs font-semibold text-cyan-700 hover:text-cyan-900 bg-cyan-50 hover:bg-cyan-100 border border-cyan-200/80 px-2.5 py-1 rounded-lg transition-colors print:text-[10px] print:text-gray-900 print:font-bold"
+                                    onClick={(e) => e.stopPropagation()}
+                                  >
+                                    <ExternalLink className="w-3 h-3 no-print shrink-0 text-cyan-600" aria-hidden="true" />
+                                    <span className="no-print">{lnk.label}</span>
+                                    <span className="hidden print:inline">
+                                      {lnk.label} — (Acesse: {lnk.url})
+                                    </span>
+                                  </a>
+                                ))}
                               </div>
                             )}
                           </div>

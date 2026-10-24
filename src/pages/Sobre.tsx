@@ -45,27 +45,33 @@ const equipe: MembroEquipe[] = [
     instagram: '', // Insira o Instagram aqui
   },
   {
-    nome: 'Emilly',
+    nome: 'Emily Bandeira',
     funcao: 'Análise Técnica de Cibersegurança & Engenharia Social',
     foto: '',
-    linkedin: '',
-    instagram: '',
+    linkedin: 'https://www.linkedin.com/in/emily-bandeira-72615122b',
+    instagram: 'https://www.instagram.com/emilybalv/',
   },
   {
-    nome: 'Jéssica',
+    nome: 'Jessica Mertiek',
     funcao: 'Guias de Prevenção & Planos de Contenção',
     foto: '',
-    linkedin: '',
-    instagram: '',
+    linkedin: 'https://www.linkedin.com/in/jessica-alves-duo-insight-885202203',
+    instagram: 'https://www.instagram.com/jessicamertiek/',
   },
   {
     nome: 'Beatriz Negrão',
     funcao: 'Desenvolvimento Web, UX/UI & Mídia',
     foto: '',
-    linkedin: '',
-    instagram: '',
+    linkedin: 'https://www.linkedin.com/in/beatriz-negrão-braz',
+    instagram: 'https://www.instagram.com/bianegraobraz_/',
   },
 ]
+
+const getInstagramUrl = (handleOrUrl?: string) => {
+  if (!handleOrUrl) return ''
+  if (handleOrUrl.startsWith('http://') || handleOrUrl.startsWith('https://')) return handleOrUrl
+  return `https://www.instagram.com/${handleOrUrl.replace(/^@/, '').trim()}/`
+}
 
 export const Sobre = () => {
   return (
@@ -184,7 +190,7 @@ export const Sobre = () => {
 
                     {membro.instagram ? (
                       <a
-                        href={membro.instagram}
+                        href={getInstagramUrl(membro.instagram)}
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label={`Instagram de ${membro.nome}`}

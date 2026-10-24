@@ -24,7 +24,7 @@ export const Badge = ({ nivel, size = 'md' }: BadgeProps) => {
       className={`inline-flex items-center gap-1.5 font-bold rounded-full border ${styles[nivel]} ${sizeClass}`}
     >
       <span className={`w-1.5 h-1.5 rounded-full ${dots[nivel]}`} />
-      {nivel}
+      Risco {nivel}
     </span>
   )
 }

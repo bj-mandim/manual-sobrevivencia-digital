@@ -286,6 +286,36 @@ export const golpes: Golpe[] = [
     ],
     estatistica: 'Golpes com deepfake de voz cresceram 3.000% em 2023 com a popularização de ferramentas de IA.',
   },
+  {
+    id: 11,
+    slug: 'fake-news',
+    nome: 'Fake News, Desinformação e Falsos Alertas (Bônus)',
+    descricao: 'Boatos virais, montagens e notícias falsas criadas para gerar pânico, manipular decisões ou disseminar links maliciosos.',
+    nivelRisco: 'Médio',
+    categoria: 'ia-tecnologia',
+    videoUrl: 'https://www.youtube.com/embed/placeholder11',
+    comoFunciona: [
+      { numero: 1, titulo: 'Criação do boato', descricao: 'Conteúdo fabricado ou distorcido (vídeo fora de contexto, áudio anônimo ou texto alarmista) apela a fortes emoções como medo ou revolta.' },
+      { numero: 2, titulo: 'Disseminação viral', descricao: 'Mensagens em massa circulam em grupos de WhatsApp, Telegram e redes sociais pedindo para "repassar antes que o governo apague".' },
+      { numero: 3, titulo: 'Isca para novos golpes', descricao: 'O boato inclui links suspeitos que roubam dados, propagam malware ou induzem a cadastros em plataformas fraudulentas.' },
+      { numero: 4, titulo: 'Prejuízo social e financeiro', descricao: 'Causa decisões erradas em saúde, investimentos e perda de reputação de pessoas inocentes.' },
+    ],
+    sinaisDeAlerta: [
+      'Apelos sensacionalistas de urgência ("repassar para todos os seus grupos agora")',
+      'Uso excessivo de CAIXA ALTA, exclamações (!!!) e erros crassos de ortografia',
+      'Áudios anônimos de supostos "médicos", "delegados" ou "fontes internas"',
+      'Ausência de datas exatas, nomes completos ou links para fontes oficiais (.gov.br)',
+      'Links com extensões incomuns (.xyz, .top, .online) imitando portais de notícias conhecidos',
+    ],
+    comoEvitar: [
+      'Antes de compartilhar, pesquise o título no Google acompanhado das palavras "é verdade" ou "fato ou fake"',
+      'Consulte agências de checagem confiáveis (Fato ou Fake, Aos Fatos, Agência Lupa, UOL Confere)',
+      'Desconfie de áudios e textos sem identificação autêntica recebidos no WhatsApp',
+      'Confira se veículos de imprensa estabelecidos também noticiaram o fato',
+      'Interrompa a corrente: não repasse mensagens duvidosas para amigos e familiares',
+    ],
+    estatistica: 'Mais de 80% dos brasileiros já compartilharam conteúdos desinformativos sem checar a fonte.',
+  },
 ]
 
 export const golpeBySlug = (slug: string): Golpe | undefined =>

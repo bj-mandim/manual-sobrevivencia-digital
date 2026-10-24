@@ -32,6 +32,7 @@ export interface Situacao {
   corFundo: string
   corIcone: string
   golpeSlug: string
+  videoUrl?: string
 }
 
 export interface ChecklistItemType {

@@ -25,42 +25,80 @@
   }
 
   .btn-success {
-    @apply flex items-center gap-2 bg-brand-green hover:bg-teal-700 text-white font-bold px-5 py-3 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-teal-400 focus:ring-offset-2;
+    @apply flex items-center gap-2 bg-black hover:bg-neutral-900 text-cyan-400 border border-cyan-500/40 hover:border-cyan-400 font-bold px-5 py-3 rounded-lg shadow-[0_0_15px_rgba(0,229,255,0.15)] hover:shadow-[0_0_20px_rgba(0,229,255,0.3)] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2;
   }
 
   .section-title {
-    @apply text-2xl sm:text-3xl font-display font-bold text-navy;
+    @apply text-2xl sm:text-3xl font-display font-bold text-black;
   }
 
   .card-base {
-    @apply bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow duration-200;
+    @apply bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md hover:border-cyan-200 transition-all duration-200;
   }
 }
 
 @layer utilities {
   .text-brand-gradient {
-    @apply bg-gradient-to-r from-brand-green to-teal-400 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-cyan-400 via-[#00e5ff] to-cyan-300 bg-clip-text text-transparent;
   }
 
   .bg-navy-gradient {
-    background: linear-gradient(135deg, #0F2547 0%, #1a3a6b 100%);
+    background: linear-gradient(135deg, #000000 0%, #0a0a0a 60%, #141414 100%);
   }
 }
 
 /* Print styles for emergency checklist */
 @media print {
+  @page {
+    size: A4;
+    margin: 12mm 15mm 12mm 15mm;
+  }
+
+  /* Ocultar elementos de navegação e controles interativos da tela */
   header,
   footer,
+  nav,
   .no-print {
     display: none !important;
   }
 
   body {
-    font-size: 12pt;
-    color: #000;
+    font-size: 10pt !important;
+    line-height: 1.35 !important;
+    color: #111827 !important;
+    background: #ffffff !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Remove sombras e ajusta bordas para impressão nítida em papel */
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  /* Previne quebra de blocos no meio da página */
+  .print-avoid-break {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
   }
 
   .print-break {
-    page-break-before: always;
+    break-before: page !important;
+    page-break-before: always !important;
+  }
+
+  /* Garante exibição de URLs e elementos de impressão */
+  .print-only {
+    display: block !important;
+  }
+
+  .screen-only {
+    display: none !important;
+  }
+
+  a {
+    text-decoration: none !important;
+    color: inherit !important;
   }
 }

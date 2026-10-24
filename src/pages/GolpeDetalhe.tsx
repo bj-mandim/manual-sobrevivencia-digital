@@ -6,6 +6,7 @@ import { VideoEmbed } from '../components/ui/VideoEmbed'
 import { StepTimeline } from '../components/ui/StepTimeline'
 import { AlertList } from '../components/ui/AlertList'
 import { golpeBySlug, golpes } from '../data/golpes'
+import { situacoes } from '../data/situacoes'
 
 export const GolpeDetalhe = () => {
   const { slug } = useParams<{ slug: string }>()
@@ -22,16 +23,19 @@ export const GolpeDetalhe = () => {
   const prev = currentIndex > 0 ? golpes[currentIndex - 1] : null
   const next = currentIndex < golpes.length - 1 ? golpes[currentIndex + 1] : null
 
+  // Encontra a situação correspondente para carregar o checklist exato
+  const situacaoCorrespondente = situacoes.find((s) => s.golpeSlug === golpe.slug)?.id
+
   return (
     <div className="min-h-screen bg-gray-50 pt-16">
       {/* Header */}
-      <div className="bg-navy py-10 px-4">
+      <div className="bg-black py-10 px-4 border-b border-white/10">
         <div className="max-w-4xl mx-auto">
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-xs text-gray-400 mb-5" aria-label="Navegação">
-            <Link to="/" className="hover:text-white transition-colors">Início</Link>
+            <Link to="/" className="hover:text-cyan-400 transition-colors">Início</Link>
             <span>/</span>
-            <Link to="/golpes" className="hover:text-white transition-colors">Golpes</Link>
+            <Link to="/golpes" className="hover:text-cyan-400 transition-colors">Golpes</Link>
             <span>/</span>
             <span className="text-gray-300">{golpe.nome}</span>
           </nav>
@@ -83,21 +87,21 @@ export const GolpeDetalhe = () => {
 
         {/* Statistic */}
         {golpe.estatistica && (
-          <div className="bg-navy rounded-xl p-6 text-center">
-            <p className="text-brand-green text-xs font-bold uppercase tracking-widest mb-2">Dado importante</p>
+          <div className="bg-black border border-white/10 rounded-xl p-6 text-center">
+            <p className="text-cyan-400 text-xs font-bold uppercase tracking-widest mb-2">Dado importante</p>
             <p className="text-white text-base sm:text-lg font-semibold">{golpe.estatistica}</p>
           </div>
         )}
 
         {/* Emergency CTA */}
         <div className="bg-brand-red/10 border-2 border-brand-red rounded-xl p-6 flex flex-col sm:flex-row items-center gap-4">
-          <AlertTriangle className="w-10 h-10 text-brand-red shrink-0" />
+          <AlertTriangle className="w-10 h-10 text-brand-red shrink-0" aria-hidden="true" />
           <div className="flex-1 text-center sm:text-left">
-            <h3 className="font-display font-bold text-navy text-lg mb-1">Você caiu neste golpe?</h3>
+            <h3 className="font-display font-bold text-black text-lg mb-1">Você caiu neste golpe?</h3>
             <p className="text-gray-600 text-sm">Siga o checklist de emergência — saiba o que fazer agora.</p>
           </div>
           <Link
-            to={`/fui-vitima`}
+            to={situacaoCorrespondente ? `/fui-vitima?situacao=${situacaoCorrespondente}` : '/fui-vitima'}
             className="btn-danger shrink-0 text-sm"
           >
             Ver o que fazer
@@ -105,25 +109,27 @@ export const GolpeDetalhe = () => {
         </div>
 
         {/* Prev / Next navigation */}
-        <div className="flex justify-between gap-4 pt-4 border-t border-gray-200">
+        <nav aria-label="Navegação entre golpes" className="flex justify-between gap-4 pt-4 border-t border-gray-200">
           {prev ? (
             <Link
               to={`/golpes/${prev.slug}`}
-              className="flex items-center gap-2 text-sm font-semibold text-navy hover:text-brand-green transition-colors"
+              aria-label={`Ir para o golpe anterior: ${prev.nome}`}
+              className="flex items-center gap-2 text-sm font-semibold text-black hover:text-cyan-500 transition-colors"
             >
-              <ChevronLeft className="w-4 h-4" /> {prev.nome}
+              <ChevronLeft className="w-4 h-4" aria-hidden="true" /> {prev.nome}
             </Link>
           ) : <span />}
 
           {next && (
             <Link
               to={`/golpes/${next.slug}`}
-              className="flex items-center gap-2 text-sm font-semibold text-navy hover:text-brand-green transition-colors"
+              aria-label={`Ir para o próximo golpe: ${next.nome}`}
+              className="flex items-center gap-2 text-sm font-semibold text-black hover:text-cyan-500 transition-colors"
             >
-              {next.nome} <ChevronRight className="w-4 h-4" />
+              {next.nome} <ChevronRight className="w-4 h-4" aria-hidden="true" />
             </Link>
           )}
-        </div>
+        </nav>
       </div>
     </div>
   )

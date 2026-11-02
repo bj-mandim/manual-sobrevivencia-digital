@@ -57,7 +57,12 @@ export const GolpeDetalhe = () => {
         {/* Video */}
         <section>
           <h2 className="section-title mb-5">Assista e entenda</h2>
-          <VideoEmbed url={golpe.videoUrl} title={`Vídeo explicativo — ${golpe.nome}`} />
+          <VideoEmbed
+            url={golpe.videoUrl}
+            title={`Vídeo explicativo — ${golpe.nome}`}
+            placeholderTitle={`Vídeo sobre ${golpe.nome}`}
+            placeholderDesc={`Espaço reservado para o vídeo educativo demonstrando como identificar e se proteger do golpe de ${golpe.nome.toLowerCase()}.`}
+          />
         </section>
 
         {/* How it works */}

@@ -63,6 +63,7 @@ export interface PerfilProtecao {
   id: string
   label: string
   emoji: string
+  videoUrl?: string
   golpesPrincipais: string[]
   dicas: string[]
 }

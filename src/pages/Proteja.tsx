@@ -3,9 +3,7 @@ import { Link } from "react-router-dom";
 import { ShieldCheck, ArrowRight, CheckCircle, PlayCircle } from "lucide-react";
 import { PerfilProtecao } from "../types";
 import { VideoEmbed } from "../components/ui/VideoEmbed";
-
-// Link do vídeo da aba Proteja-se — insira o link do YouTube aqui ou mantenha com placeholder
-const VIDEO_URL_PROTEJA = "https://www.youtube.com/watch?v=placeholder";
+import { VIDEOS_PROTEJA } from "../data/videos";
 
 const perfis: PerfilProtecao[] = [
   {
@@ -67,6 +65,7 @@ const perfis: PerfilProtecao[] = [
 export const Proteja = () => {
   const [activePerfil, setActivePerfil] = useState<string>("idosos");
   const perfil = perfis.find((p) => p.id === activePerfil)!;
+  const perfilVideo = VIDEOS_PROTEJA[activePerfil as keyof typeof VIDEOS_PROTEJA];
 
   return (
     <div className="min-h-screen bg-gray-50 pt-16">
@@ -86,7 +85,7 @@ export const Proteja = () => {
       </div>
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 py-10">
-        {/* Espaço para Vídeo Geral de Prevenção (independente do nicho selecionado) */}
+        {/* Espaço para Vídeo Principal de Prevenção */}
         <section className="mb-10 bg-white rounded-2xl p-6 sm:p-8 border border-gray-100 shadow-sm">
           <div className="flex items-center gap-3 mb-3">
             <span className="flex items-center justify-center w-9 h-9 rounded-xl bg-cyan-500/10 text-cyan-500 shrink-0">
@@ -94,19 +93,19 @@ export const Proteja = () => {
             </span>
             <div>
               <h2 className="font-display font-bold text-black text-lg sm:text-xl">
-                Guia em Vídeo: Como se Proteger no Dia a Dia
+                {VIDEOS_PROTEJA.principal.titulo}
               </h2>
               <p className="text-xs sm:text-sm text-gray-500">
-                Orientações fundamentais de cibersegurança que todo cidadão deve conhecer, válidas para todas as idades.
+                {VIDEOS_PROTEJA.principal.descricao}
               </p>
             </div>
           </div>
           <div className="mt-4">
             <VideoEmbed
-              url={VIDEO_URL_PROTEJA}
-              title="Guia em Vídeo: Como se Proteger no Dia a Dia"
-              placeholderTitle="Vídeo Educativo de Prevenção"
-              placeholderDesc="Espaço reservado para o vídeo geral de proteção contra golpes virtuais."
+              url={VIDEOS_PROTEJA.principal.url}
+              title={VIDEOS_PROTEJA.principal.titulo}
+              placeholderTitle={VIDEOS_PROTEJA.principal.titulo}
+              placeholderDesc={VIDEOS_PROTEJA.principal.descricao}
             />
           </div>
         </section>
@@ -153,6 +152,25 @@ export const Proteja = () => {
           aria-live="polite"
           className="space-y-6"
         >
+          {/* Vídeo do Perfil (se configurado com link futuro) */}
+          {perfilVideo && perfilVideo.url && (
+            <div className="bg-white rounded-xl border border-gray-100 shadow-sm p-6">
+              <h3 className="font-display font-bold text-black text-lg mb-2 flex items-center gap-2">
+                <PlayCircle className="w-5 h-5 text-cyan-500" aria-hidden="true" />
+                {perfilVideo.titulo}
+              </h3>
+              <p className="text-sm text-gray-500 mb-4">
+                {perfilVideo.descricao}
+              </p>
+              <VideoEmbed
+                url={perfilVideo.url}
+                title={perfilVideo.titulo}
+                placeholderTitle={perfilVideo.titulo}
+                placeholderDesc={perfilVideo.descricao}
+              />
+            </div>
+          )}
+
           {/* Top 3 scams for this profile */}
           <div className="bg-white rounded-xl border border-gray-100 shadow-sm p-6">
             <h3 className="font-display font-bold text-black text-lg mb-4 flex items-center gap-2">

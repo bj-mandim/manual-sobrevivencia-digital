@@ -5,113 +5,14 @@ import { SituationCard } from '../components/ui/SituationCard'
 import { VideoEmbed } from '../components/ui/VideoEmbed'
 import { situacoes } from '../data/situacoes'
 import { getFasesPorSituacao } from '../data/contencao'
+import { VIDEOS_FUI_VITIMA, VideoInfo } from '../data/videos'
 
 // ============================================================================
 // CONFIGURAÇÃO DOS VÍDEOS POR CASO/SITUAÇÃO (FUI VÍTIMA)
 // ============================================================================
-// Ao clicar em cada caso, o vídeo é atualizado condicionalmente.
-// Substitua o campo 'url' de cada caso pelo link correspondente do YouTube.
-export interface VideoCasoInfo {
-  url: string
-  titulo: string
-  descricao: string
-}
-
-export const VIDEOS_POR_SITUACAO: Record<string, VideoCasoInfo> = {
-  // Vídeo geral (quando nenhuma opção específica estiver selecionada)
-  geral: {
-    url: 'https://www.youtube.com/watch?v=placeholder',
-    titulo: 'Orientações Gerais: O Que Fazer ao Cair em um Golpe',
-    descricao: 'Instruções preliminares importantes para manter a calma, evitar decisões impulsivas e proteger seus dados.',
-  },
-  // 1. Phishing
-  phishing: {
-    url: 'https://www.youtube.com/watch?v=placeholder1',
-    titulo: '1. Phishing, SMS ou Ligação Falsa (Falsa Central)',
-    descricao: 'Como agir caso tenha atendido ligações de supostos bancos, clicado em links falsos ou fornecido senhas por engano.',
-  },
-  // 2. WhatsApp
-  whatsapp: {
-    url: 'https://www.youtube.com/watch?v=placeholder2',
-    titulo: '2. WhatsApp Invadido ou Clonado',
-    descricao: 'Como desconectar invasores pelo WhatsApp Web, recuperar sua conta via código SMS e alertar contatos para evitar novas vítimas.',
-  },
-  // 3. Pix
-  pix: {
-    url: 'https://www.youtube.com/watch?v=placeholder3',
-    titulo: '3. Golpe do Pix ou Comprovante Falso',
-    descricao: 'Como acionar imediatamente o MED (Mecanismo Especial de Devolução) do Banco Central nas primeiras horas para tentar reaver os valores.',
-  },
-  // 4. Redes Sociais
-  'redes-sociais': {
-    url: 'https://www.youtube.com/watch?v=placeholder4',
-    titulo: '4. Rede Social Invadida ou Roubada (Instagram / TikTok / Facebook)',
-    descricao: 'Procedimentos oficiais de recuperação de perfil, revogação de acessos de criminosos e denúncia de contas usurpadas.',
-  },
-  // 5. Investimentos
-  investimentos: {
-    url: 'https://www.youtube.com/watch?v=placeholder5',
-    titulo: '5. Falso Investimento ou Pirâmide Financeira',
-    descricao: 'Instruções urgentes: não pague taxas para liberação de saque, preserve todas as provas e registre queixa formal na CVM e na polícia.',
-  },
-  // 6. Emprego
-  emprego: {
-    url: 'https://www.youtube.com/watch?v=placeholder6',
-    titulo: '6. Falsa Vaga de Emprego ou Plataforma de Tarefas',
-    descricao: 'Como cessar o contato com falsos recrutadores sem pagar "taxas de exame", proteger seus documentos e denunciar o esquema.',
-  },
-  // 7. E-commerce
-  ecommerce: {
-    url: 'https://www.youtube.com/watch?v=placeholder7',
-    titulo: '7. Loja Virtual Falsa / Comprei e Não Recebi',
-    descricao: 'Como acionar o chargeback com a operadora do seu cartão de crédito, cancelar o cartão exposto e registrar no Procon.',
-  },
-  // 8. Órgãos Públicos
-  'orgaos-publicos': {
-    url: 'https://www.youtube.com/watch?v=placeholder8',
-    titulo: '8. Falso Órgão Público (INSS / Receita Federal / Gov.br)',
-    descricao: 'Como verificar pendências diretamente nos portais oficiais .gov.br, blindar sua conta Gov.br e bloquear empréstimos indevidos.',
-  },
-  // 9. QR Code
-  qrcode: {
-    url: 'https://www.youtube.com/watch?v=placeholder9',
-    titulo: '9. QR Code Malicioso (Quishing)',
-    descricao: 'Passos imediatos para fechar páginas maliciosas, verificar extratos bancários e denunciar o código adulterado no local físico.',
-  },
-  // 10. Deepfake
-  deepfake: {
-    url: 'https://www.youtube.com/watch?v=placeholder10',
-    titulo: '10. Deepfake de Voz ou Imagem com Inteligência Artificial',
-    descricao: 'Como registrar provas com fé pública (ata notarial), acionar ferramentas de remoção rápida e denunciar na Delegacia Especializada.',
-  },
-  // 11. Fake News
-  'fake-news': {
-    url: 'https://www.youtube.com/watch?v=placeholder11',
-    titulo: '11. Fake News, Desinformação e Falsos Alertas (Bônus)',
-    descricao: 'Como checar boatos em agências profissionais de fact-checking, quebrar a cadeia de compartilhamento e agir em caso de difamação.',
-  },
-  // Aliases para compatibilidade retroativa
-  ligacao: {
-    url: 'https://www.youtube.com/watch?v=placeholder1',
-    titulo: '1. Phishing e Ligação Falsa (Falsa Central)',
-    descricao: 'Como agir caso tenha conversado com falsos gerentes bancários ou fornecido dados por telefone.',
-  },
-  link: {
-    url: 'https://www.youtube.com/watch?v=placeholder1',
-    titulo: '1. Phishing por Link Malicioso ou SMS',
-    descricao: 'Passos urgentes de contenção para desinfectar o dispositivo, alterar senhas e revogar permissões.',
-  },
-  'rede-social': {
-    url: 'https://www.youtube.com/watch?v=placeholder4',
-    titulo: '4. Rede Social Invadida ou Roubada',
-    descricao: 'Procedimentos oficiais para recuperação de conta invadida e denúncia de perfis usurpados.',
-  },
-  conta: {
-    url: 'https://www.youtube.com/watch?v=placeholder4',
-    titulo: '4. Perdi Acesso a uma Conta Importante',
-    descricao: 'Como restabelecer acesso com autenticação forte, recuperar e-mail de recuperação e proteger dados pessoais.',
-  },
-}
+// Centralizada no arquivo src/data/videos.ts
+export type VideoCasoInfo = VideoInfo
+export const VIDEOS_POR_SITUACAO: Record<string, VideoCasoInfo> = VIDEOS_FUI_VITIMA
 
 export const FuiVitima = () => {
   const [searchParams, setSearchParams] = useSearchParams()

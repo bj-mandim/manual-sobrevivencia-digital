@@ -1,8 +1,39 @@
-interface VideoEmbedProps {
-  url: string
+import { Play } from 'lucide-react'
+
+export interface VideoEmbedProps {
+  url?: string
   title?: string
   placeholderTitle?: string
   placeholderDesc?: string
+}
+
+/**
+ * Converte qualquer formato comum de link do YouTube para o link seguro de embed.
+ * Retorna null se a URL for vazia, indefinida ou um placeholder.
+ */
+export const getYouTubeEmbedUrl = (rawUrl?: string): string | null => {
+  if (!rawUrl) return null
+  const url = rawUrl.trim()
+  if (!url || url.toLowerCase().includes('placeholder')) return null
+
+  // Se já for uma URL de embed válida (sem ser placeholder)
+  if (url.includes('youtube.com/embed/')) {
+    return url
+  }
+
+  // Formato: https://youtu.be/<id>
+  const youtuBeMatch = url.match(/youtu\.be\/([\w-]{11})/)
+  if (youtuBeMatch && youtuBeMatch[1]) {
+    return `https://www.youtube.com/embed/${youtuBeMatch[1]}`
+  }
+
+  // Formato: https://www.youtube.com/watch?v=<id> ou /shorts/<id> ou /v/<id>
+  const ytMatch = url.match(/(?:youtube\.com\/(?:watch\?(?:.*&)?v=|shorts\/|v\/))([\w-]{11})/)
+  if (ytMatch && ytMatch[1]) {
+    return `https://www.youtube.com/embed/${ytMatch[1]}`
+  }
+
+  return url
 }
 
 export const VideoEmbed = ({
@@ -11,49 +42,39 @@ export const VideoEmbed = ({
   placeholderTitle = 'Vídeo em breve',
   placeholderDesc = 'O conteúdo em vídeo será adicionado em breve.',
 }: VideoEmbedProps) => {
-  // Convert watch or youtu.be URL to embed URL if needed
-  let embedUrl = url || ''
-  if (embedUrl.includes('youtu.be/')) {
-    const id = embedUrl.split('youtu.be/')[1]?.split('?')[0]
-    embedUrl = `https://www.youtube.com/embed/${id}`
-  } else if (embedUrl.includes('watch?v=')) {
-    embedUrl = embedUrl.replace('watch?v=', 'embed/')
-  }
-
-  const isPlaceholder = !embedUrl || embedUrl.includes('placeholder')
+  const embedUrl = getYouTubeEmbedUrl(url)
+  const isPlaceholder = !embedUrl
 
   if (isPlaceholder) {
     return (
-      <div className="relative w-full aspect-video bg-black rounded-xl overflow-hidden flex items-center justify-center border border-white/10 shadow-xl">
-        <div className="text-center text-gray-400 p-8">
-          <svg
-            className="w-16 h-16 mx-auto mb-3 opacity-60 text-cyan-400"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={1.5}
-              d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"
-            />
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={1.5}
-              d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-            />
-          </svg>
-          <p className="text-base font-bold text-white">{placeholderTitle}</p>
-          <p className="text-xs sm:text-sm mt-1 text-gray-400 max-w-md mx-auto">{placeholderDesc}</p>
+      <div className="relative w-full aspect-video bg-gradient-to-br from-gray-950 via-gray-900 to-black rounded-xl overflow-hidden flex flex-col items-center justify-center border border-white/10 shadow-xl p-6 text-center select-none">
+        {/* Padrão decorativo de fundo com grid suave */}
+        <div className="absolute inset-0 bg-[radial-gradient(#00e5ff_1px,transparent_1px)] [background-size:16px_16px] opacity-10 pointer-events-none" />
+
+        <div className="relative z-10 flex flex-col items-center max-w-md px-4">
+          {/* Botão de Play ilustrativo com glow ciano */}
+          <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 mb-4 shadow-[0_0_24px_rgba(0,229,255,0.18)]">
+            <Play className="w-6 h-6 sm:w-7 sm:h-7 ml-0.5 fill-cyan-400/20" />
+          </div>
+
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[11px] font-semibold text-cyan-300 uppercase tracking-wider mb-2.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
+            Espaço Reservado para Vídeo
+          </div>
+
+          <p className="text-base sm:text-lg font-bold text-white mb-1.5 line-clamp-2">
+            {placeholderTitle}
+          </p>
+          <p className="text-xs sm:text-sm text-gray-400 leading-relaxed max-w-sm line-clamp-3">
+            {placeholderDesc}
+          </p>
         </div>
       </div>
     )
   }
 
   return (
-    <div className="relative w-full aspect-video rounded-xl overflow-hidden shadow-xl border border-gray-200">
+    <div className="relative w-full aspect-video rounded-xl overflow-hidden shadow-xl border border-gray-200 bg-black">
       <iframe
         src={embedUrl}
         title={title}

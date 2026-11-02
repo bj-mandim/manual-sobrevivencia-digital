@@ -1,4 +1,5 @@
 import { Golpe } from '../types'
+import { VIDEOS_GOLPES } from './videos'
 
 export const golpes: Golpe[] = [
   {
@@ -8,7 +9,7 @@ export const golpes: Golpe[] = [
     descricao: 'E-mails, SMS e ligações falsas simulando bancos para roubar seus dados.',
     nivelRisco: 'Crítico',
     categoria: 'financeiro',
-    videoUrl: 'https://www.youtube.com/embed/placeholder1',
+    videoUrl: VIDEOS_GOLPES['phishing'] || '',
     comoFunciona: [
       { numero: 1, titulo: 'Contato inicial', descricao: 'Golpista envia e-mail, SMS ou liga se passando por banco, operadora ou órgão público.' },
       { numero: 2, titulo: 'Criação de urgência', descricao: 'Alerta sobre transação suspeita, bloqueio de conta ou problema que exige ação imediata.' },
@@ -38,7 +39,7 @@ export const golpes: Golpe[] = [
     descricao: 'Golpistas obtêm o código de verificação por engenharia social para tomar conta do seu WhatsApp.',
     nivelRisco: 'Crítico',
     categoria: 'identidade',
-    videoUrl: 'https://www.youtube.com/embed/placeholder2',
+    videoUrl: VIDEOS_GOLPES['whatsapp'] || '',
     comoFunciona: [
       { numero: 1, titulo: 'Abordagem inicial', descricao: 'Golpista liga fingindo ser da equipe do WhatsApp, operadora ou empresa de sorteio.' },
       { numero: 2, titulo: 'Pedido do código', descricao: 'Solicita o código de 6 dígitos que "acabou de chegar por SMS" — é o código real de verificação do WhatsApp.' },
@@ -66,7 +67,7 @@ export const golpes: Golpe[] = [
     descricao: 'Comprovantes falsos e alegações de depósito incorreto usados para enganar vendedores e prestadores.',
     nivelRisco: 'Crítico',
     categoria: 'financeiro',
-    videoUrl: 'https://www.youtube.com/embed/placeholder3',
+    videoUrl: VIDEOS_GOLPES['pix'] || '',
     comoFunciona: [
       { numero: 1, titulo: 'Comprovante falso', descricao: 'Golpista envia print manipulado de comprovante de Pix para o vendedor.' },
       { numero: 2, titulo: 'Pressão para entrega', descricao: 'Pressiona para receber o produto imediatamente, antes da confirmação real no extrato.' },
@@ -94,7 +95,7 @@ export const golpes: Golpe[] = [
     descricao: 'Roubo de contas de Instagram, Facebook e TikTok para aplicar golpes usando sua reputação.',
     nivelRisco: 'Alto',
     categoria: 'redes-sociais',
-    videoUrl: 'https://www.youtube.com/embed/placeholder4',
+    videoUrl: VIDEOS_GOLPES['redes-sociais'] || '',
     comoFunciona: [
       { numero: 1, titulo: 'Link malicioso', descricao: 'Vítima clica em link falso (verificação de conta, parceria, oferta) que leva a página de login fake.' },
       { numero: 2, titulo: 'Captura de credenciais', descricao: 'Login e senha são capturados pelo golpista ao serem digitados no site falso.' },
@@ -122,7 +123,7 @@ export const golpes: Golpe[] = [
     descricao: 'Promessas de retornos diários exorbitantes em pirâmides financeiras ou tarefas online pagas.',
     nivelRisco: 'Crítico',
     categoria: 'financeiro',
-    videoUrl: 'https://www.youtube.com/embed/placeholder5',
+    videoUrl: VIDEOS_GOLPES['investimentos'] || '',
     comoFunciona: [
       { numero: 1, titulo: 'Recrutamento', descricao: 'Contato por WhatsApp com oferta de renda extra: investir com retorno garantido ou realizar tarefas simples.' },
       { numero: 2, titulo: 'Primeiros "ganhos"', descricao: 'Nas primeiras semanas, saques pequenos são liberados para criar confiança e incentivar aportes maiores.' },
@@ -151,7 +152,7 @@ export const golpes: Golpe[] = [
     descricao: 'Propostas irrealistas que exigem pagamento de taxas para exames admissionais ou treinamento.',
     nivelRisco: 'Alto',
     categoria: 'identidade',
-    videoUrl: 'https://www.youtube.com/embed/placeholder6',
+    videoUrl: VIDEOS_GOLPES['emprego'] || '',
     comoFunciona: [
       { numero: 1, titulo: 'Oferta atrativa', descricao: 'Anúncio de vaga com salário muito acima do mercado, trabalho remoto e poucos requisitos.' },
       { numero: 2, titulo: 'Processo seletivo falso', descricao: 'Entrevista rápida por mensagem ou e-mail, sem verificação real de competências.' },
@@ -180,7 +181,7 @@ export const golpes: Golpe[] = [
     descricao: 'Sites e perfis em redes sociais com preços irresistíveis que coletam pagamento sem entregar produtos.',
     nivelRisco: 'Alto',
     categoria: 'financeiro',
-    videoUrl: 'https://www.youtube.com/embed/placeholder7',
+    videoUrl: VIDEOS_GOLPES['ecommerce'] || '',
     comoFunciona: [
       { numero: 1, titulo: 'Anúncio tentador', descricao: 'Produto anunciado com desconto de 60–80%, geralmente em datas comemorativas ou em redes sociais.' },
       { numero: 2, titulo: 'Site ou perfil convincente', descricao: 'Loja com visual profissional, avaliações falsas e CNPJ copiado de empresa legítima.' },
@@ -209,7 +210,7 @@ export const golpes: Golpe[] = [
     descricao: 'Notificações falsas sobre pendências no CPF, cancelamento de aposentadoria ou restituição do IR.',
     nivelRisco: 'Crítico',
     categoria: 'identidade',
-    videoUrl: 'https://www.youtube.com/embed/placeholder8',
+    videoUrl: VIDEOS_GOLPES['orgaos-publicos'] || '',
     comoFunciona: [
       { numero: 1, titulo: 'Notificação oficial falsa', descricao: 'Mensagem via e-mail, SMS ou ligação simulando Receita Federal, INSS, Serasa ou banco central.' },
       { numero: 2, titulo: 'Ameaça de prejuízo', descricao: 'Alerta de bloqueio de CPF, cancelamento de aposentadoria, dívida fiscal ou restrição de crédito urgente.' },
@@ -238,7 +239,7 @@ export const golpes: Golpe[] = [
     descricao: 'Substituição de QR codes legítimos em locais públicos para redirecionar ao pagamento de sites falsos.',
     nivelRisco: 'Médio',
     categoria: 'financeiro',
-    videoUrl: 'https://www.youtube.com/embed/placeholder9',
+    videoUrl: VIDEOS_GOLPES['qrcode'] || '',
     comoFunciona: [
       { numero: 1, titulo: 'Substituição física', descricao: 'QR code malicioso é colado sobre código legítimo em restaurantes, estacionamentos ou cardápios digitais.' },
       { numero: 2, titulo: 'Escaneamento pela vítima', descricao: 'Usuário escaneia achando ser legítimo e é redirecionado a site falso de pagamento.' },
@@ -265,7 +266,7 @@ export const golpes: Golpe[] = [
     descricao: 'Inteligência artificial usada para imitar a voz ou criar vídeos de familiares pedindo socorro financeiro.',
     nivelRisco: 'Crítico',
     categoria: 'ia-tecnologia',
-    videoUrl: 'https://www.youtube.com/embed/placeholder10',
+    videoUrl: VIDEOS_GOLPES['deepfake'] || '',
     comoFunciona: [
       { numero: 1, titulo: 'Coleta de amostras de voz', descricao: 'Golpistas capturam áudios e vídeos da vítima ou familiar a partir de redes sociais públicas.' },
       { numero: 2, titulo: 'Geração de deepfake', descricao: 'Ferramentas de IA replicam a voz e aparência com alta fidelidade em poucos segundos.' },
@@ -294,7 +295,7 @@ export const golpes: Golpe[] = [
     descricao: 'Boatos virais, montagens e notícias falsas criadas para gerar pânico, manipular decisões ou disseminar links maliciosos.',
     nivelRisco: 'Médio',
     categoria: 'ia-tecnologia',
-    videoUrl: 'https://www.youtube.com/embed/placeholder11',
+    videoUrl: VIDEOS_GOLPES['fake-news'] || '',
     comoFunciona: [
       { numero: 1, titulo: 'Criação do boato', descricao: 'Conteúdo fabricado ou distorcido (vídeo fora de contexto, áudio anônimo ou texto alarmista) apela a fortes emoções como medo ou revolta.' },
       { numero: 2, titulo: 'Disseminação viral', descricao: 'Mensagens em massa circulam em grupos de WhatsApp, Telegram e redes sociais pedindo para "repassar antes que o governo apague".' },

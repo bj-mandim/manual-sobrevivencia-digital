@@ -296,6 +296,7 @@ export const golpes: Golpe[] = [
     nivelRisco: 'Médio',
     categoria: 'ia-tecnologia',
     videoUrl: VIDEOS_GOLPES['fake-news'] || '',
+    dataLancamento: 'Próxima terça-feira às 18h (10/11)',
     comoFunciona: [
       { numero: 1, titulo: 'Criação do boato', descricao: 'Conteúdo fabricado ou distorcido (vídeo fora de contexto, áudio anônimo ou texto alarmista) apela a fortes emoções como medo ou revolta.' },
       { numero: 2, titulo: 'Disseminação viral', descricao: 'Mensagens em massa circulam em grupos de WhatsApp, Telegram e redes sociais pedindo para "repassar antes que o governo apague".' },

@@ -19,6 +19,7 @@ export interface Golpe {
   nivelRisco: NivelRisco
   categoria: CategoriaGolpe
   videoUrl: string
+  dataLancamento?: string
   comoFunciona: Passo[]
   sinaisDeAlerta: string[]
   comoEvitar: string[]

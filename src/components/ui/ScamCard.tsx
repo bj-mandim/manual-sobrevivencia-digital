@@ -30,11 +30,18 @@ export const ScamCard = ({ golpe }: ScamCardProps) => {
     >
       <div className="flex items-start justify-between gap-2 mb-3">
         <div className="flex flex-col gap-1.5">
-          <span
-            className={`self-start text-[10px] font-bold px-2 py-0.5 rounded-full ${categoriaColor[golpe.categoria]}`}
-          >
-            {categoriaLabel[golpe.categoria]}
-          </span>
+          <div className="flex items-center gap-1.5 flex-wrap">
+            <span
+              className={`self-start text-[10px] font-bold px-2 py-0.5 rounded-full ${categoriaColor[golpe.categoria]}`}
+            >
+              {categoriaLabel[golpe.categoria]}
+            </span>
+            {golpe.dataLancamento && (
+              <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-cyan-100 text-cyan-800 border border-cyan-300">
+                Lançamento: Terça 18h
+              </span>
+            )}
+          </div>
           <Badge nivel={golpe.nivelRisco} size="sm" />
         </div>
         <span className="text-xs font-bold text-gray-500 opacity-70 shrink-0" aria-label={`Golpe número ${golpe.id}`}>

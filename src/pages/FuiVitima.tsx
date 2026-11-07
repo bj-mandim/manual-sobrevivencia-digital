@@ -238,7 +238,12 @@ export const FuiVitima = () => {
                 url={currentVideo.url}
                 title={currentVideo.titulo}
                 placeholderTitle={currentVideo.titulo}
-                placeholderDesc={`Vídeo explicativo específico para: ${selectedSituacao && currentSituacaoObj ? currentSituacaoObj.label : 'Plano Geral de Resposta'}.`}
+                placeholderDesc={
+                  currentVideo.dataLancamento
+                    ? `Espaço reservado para a publicação do material educativo. Lançamento programado para a próxima terça-feira às 18h (10/11).`
+                    : `Vídeo explicativo específico para: ${selectedSituacao && currentSituacaoObj ? currentSituacaoObj.label : 'Plano Geral de Resposta'}.`
+                }
+                dataLancamento={currentVideo.dataLancamento}
               />
             </div>
           </section>

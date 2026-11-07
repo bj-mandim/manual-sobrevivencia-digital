@@ -1,10 +1,11 @@
-import { Play } from 'lucide-react'
+import { Play, Calendar } from 'lucide-react'
 
 export interface VideoEmbedProps {
   url?: string
   title?: string
   placeholderTitle?: string
   placeholderDesc?: string
+  dataLancamento?: string
 }
 
 /**
@@ -42,6 +43,7 @@ export const VideoEmbed = ({
   title = 'Vídeo explicativo',
   placeholderTitle = 'Vídeo em breve',
   placeholderDesc = 'O conteúdo em vídeo será adicionado em breve.',
+  dataLancamento,
 }: VideoEmbedProps) => {
   const embedUrl = getYouTubeEmbedUrl(url)
   const isPlaceholder = !embedUrl
@@ -60,7 +62,7 @@ export const VideoEmbed = ({
 
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[11px] font-semibold text-cyan-300 uppercase tracking-wider mb-2.5">
             <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
-            Espaço Reservado para Vídeo
+            {dataLancamento ? 'Espaço Reservado para Publicação' : 'Espaço Reservado para Vídeo'}
           </div>
 
           <p className="text-base sm:text-lg font-bold text-white mb-1.5 line-clamp-2">
@@ -69,6 +71,13 @@ export const VideoEmbed = ({
           <p className="text-xs sm:text-sm text-gray-400 leading-relaxed max-w-sm line-clamp-3">
             {placeholderDesc}
           </p>
+
+          {dataLancamento && (
+            <div className="mt-4 inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-cyan-500/15 border border-cyan-400/40 text-cyan-300 text-xs sm:text-sm font-semibold shadow-[0_0_16px_rgba(0,229,255,0.2)]">
+              <Calendar className="w-4 h-4 text-cyan-400 shrink-0" />
+              <span>Data de lançamento: <strong className="text-white font-bold">{dataLancamento}</strong></span>
+            </div>
+          )}
         </div>
       </div>
     )

@@ -22,6 +22,7 @@ export interface VideoInfo {
   url: string
   titulo: string
   descricao: string
+  dataLancamento?: string
 }
 
 /**
@@ -60,7 +61,7 @@ export const VIDEOS_GOLPES: Record<string, string> = {
   // 1. Phishing, Smishing e Vishing
   phishing: 'https://youtu.be/8f3Gvs6UZQA',
   // 2. Sequestro de WhatsApp
-  whatsapp: '',
+  whatsapp: 'https://youtu.be/fVlU9PTQSco',
   // 3. Golpe do Pix e Comprovante Falso
   pix: 'https://youtu.be/S2UFe33gGiU',
   // 4. Invasão de Redes Sociais
@@ -97,7 +98,7 @@ export const VIDEOS_FUI_VITIMA: Record<string, VideoInfo> = {
     descricao: 'Como agir caso tenha atendido ligações de supostos bancos, clicado em links falsos ou fornecido senhas por engano.',
   },
   whatsapp: {
-    url: '',
+    url: 'https://youtu.be/fVlU9PTQSco',
     titulo: '2. WhatsApp Invadido ou Clonado',
     descricao: 'Como desconectar invasores pelo WhatsApp Web, recuperar sua conta via código SMS e alertar contatos para evitar novas vítimas.',
   },
@@ -144,7 +145,9 @@ export const VIDEOS_FUI_VITIMA: Record<string, VideoInfo> = {
   'fake-news': {
     url: '',
     titulo: '11. Fake News, Desinformação e Falsos Alertas (Bônus)',
-    descricao: 'Como checar boatos em agências profissionais de fact-checking, quebrar a cadeia de compartilhamento e agir em caso de difamação.',
+    descricao:
+      'Como checar boatos em agências profissionais de fact-checking, quebrar a cadeia de compartilhamento e agir em caso de difamação.',
+    dataLancamento: 'Próxima terça-feira às 18h (10/11)',
   },
   // Aliases para compatibilidade retroativa com seletores
   ligacao: {

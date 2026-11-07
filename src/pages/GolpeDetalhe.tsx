@@ -56,12 +56,25 @@ export const GolpeDetalhe = () => {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 py-10 space-y-12">
         {/* Video */}
         <section>
-          <h2 className="section-title mb-5">Assista e entenda</h2>
+          <div className="flex items-center justify-between mb-5 flex-wrap gap-2">
+            <h2 className="section-title mb-0">Assista e entenda</h2>
+            {golpe.dataLancamento && (
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-cyan-50 text-cyan-800 border border-cyan-200">
+                <span className="w-2 h-2 rounded-full bg-cyan-500 animate-pulse" />
+                Lançamento: {golpe.dataLancamento}
+              </span>
+            )}
+          </div>
           <VideoEmbed
             url={golpe.videoUrl}
             title={`Vídeo explicativo — ${golpe.nome}`}
-            placeholderTitle={`Vídeo sobre ${golpe.nome}`}
-            placeholderDesc={`Espaço reservado para o vídeo educativo demonstrando como identificar e se proteger do golpe de ${golpe.nome.toLowerCase()}.`}
+            placeholderTitle={golpe.slug === 'fake-news' ? `Publicação: ${golpe.nome}` : `Vídeo sobre ${golpe.nome}`}
+            placeholderDesc={
+              golpe.dataLancamento
+                ? `Espaço reservado para a publicação do material educativo sobre Fake News. Data de lançamento confirmada para a próxima terça-feira às 18h (10/11).`
+                : `Espaço reservado para o vídeo educativo demonstrando como identificar e se proteger do golpe de ${golpe.nome.toLowerCase()}.`
+            }
+            dataLancamento={golpe.dataLancamento}
           />
         </section>
 

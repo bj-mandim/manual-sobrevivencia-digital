@@ -114,24 +114,26 @@ export const GolpeDetalhe = () => {
         </div>
 
         {/* Prev / Next navigation */}
-        <nav aria-label="Navegação entre golpes" className="flex justify-between gap-4 pt-4 border-t border-gray-200">
+        <nav aria-label="Navegação entre golpes" className="flex flex-col sm:flex-row justify-between gap-3 pt-6 border-t border-gray-200">
           {prev ? (
             <Link
               to={`/golpes/${prev.slug}`}
               aria-label={`Ir para o golpe anterior: ${prev.nome}`}
-              className="flex items-center gap-2 text-sm font-semibold text-black hover:text-cyan-500 transition-colors"
+              className="flex items-center gap-2 text-sm font-semibold text-black hover:text-cyan-600 transition-colors p-2 rounded-lg hover:bg-gray-100 max-w-full sm:max-w-[48%]"
             >
-              <ChevronLeft className="w-4 h-4" aria-hidden="true" /> {prev.nome}
+              <ChevronLeft className="w-5 h-5 shrink-0 text-cyan-600" aria-hidden="true" />
+              <span className="truncate">Anterior: {prev.nome}</span>
             </Link>
-          ) : <span />}
+          ) : <span className="hidden sm:block" />}
 
           {next && (
             <Link
               to={`/golpes/${next.slug}`}
               aria-label={`Ir para o próximo golpe: ${next.nome}`}
-              className="flex items-center gap-2 text-sm font-semibold text-black hover:text-cyan-500 transition-colors"
+              className="flex items-center justify-end gap-2 text-sm font-semibold text-black hover:text-cyan-600 transition-colors p-2 rounded-lg hover:bg-gray-100 max-w-full sm:max-w-[48%] ml-auto"
             >
-              {next.nome} <ChevronRight className="w-4 h-4" aria-hidden="true" />
+              <span className="truncate">Próximo: {next.nome}</span>
+              <ChevronRight className="w-5 h-5 shrink-0 text-cyan-600" aria-hidden="true" />
             </Link>
           )}
         </nav>

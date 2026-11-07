@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { MessageSquare, ExternalLink, HelpCircle, CheckCircle2, Sparkles, Send, ShieldQuestion } from 'lucide-react'
+import { MessageSquare, ExternalLink, HelpCircle, CheckCircle2, Sparkles, Send, ShieldQuestion, AlertCircle } from 'lucide-react'
 
 // ============================================================================
 // CONFIGURAÇÃO DO FORMULÁRIO (GOOGLE FORMS EMBED)
@@ -12,13 +12,27 @@ const FORM_EMBED_URL = 'https://docs.google.com/forms/d/e/1FAIpQLScdIjFOf7qlpdsD
 export const Feedbacks = () => {
   const [customUrl, setCustomUrl] = useState(FORM_EMBED_URL)
   const [inputUrl, setInputUrl] = useState('')
+  const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
   const activeUrl = customUrl.trim()
 
   const handleApplyUrl = (e: React.FormEvent) => {
     e.preventDefault()
-    if (inputUrl.trim()) {
-      setCustomUrl(inputUrl.trim())
+    setErrorMessage(null)
+    const trimmed = inputUrl.trim()
+    if (!trimmed) return
+
+    // Validação de segurança: apenas aceita URLs seguras com HTTPS
+    try {
+      const parsed = new URL(trimmed)
+      if (parsed.protocol !== 'https:') {
+        setErrorMessage('Por segurança, apenas links com protocolo seguro https:// são aceitos.')
+        return
+      }
+      setCustomUrl(trimmed)
+      setInputUrl('')
+    } catch {
+      setErrorMessage('Por favor, insira uma URL válida iniciando com https://')
     }
   }
 
@@ -79,11 +93,11 @@ export const Feedbacks = () => {
         {/* Formulário ou Guia de Configuração */}
         {activeUrl ? (
           <div className="bg-white rounded-2xl p-4 sm:p-6 border border-gray-100 shadow-sm">
-            <div className="flex items-center justify-between pb-4 mb-4 border-b border-gray-100">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 mb-4 border-b border-gray-100">
               <div className="flex items-center gap-2">
                 <span className="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse" />
                 <span className="text-xs font-bold text-gray-600 uppercase tracking-wider">
-                  Formulário de Resposta Aberto
+                  Formulário Oficial de Feedback
                 </span>
               </div>
               <a
@@ -92,7 +106,7 @@ export const Feedbacks = () => {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 text-xs font-semibold text-cyan-600 hover:text-cyan-700 hover:underline"
               >
-                Abrir em tela cheia <ExternalLink className="w-3.5 h-3.5" />
+                Abrir em nova aba <ExternalLink className="w-3.5 h-3.5" />
               </a>
             </div>
 
@@ -101,8 +115,10 @@ export const Feedbacks = () => {
                 src={activeUrl}
                 title="Formulário de Feedback dos Usuários"
                 aria-label="Formulário de Feedback do Manual de Sobrevivência Digital"
-                className="w-full min-h-[850px] sm:min-h-[920px] border-0"
+                className="w-full min-h-[750px] sm:min-h-[880px] border-0"
                 loading="lazy"
+                sandbox="allow-scripts allow-forms allow-same-origin allow-popups"
+                referrerPolicy="strict-origin-when-cross-origin"
               >
                 Carregando formulário de feedback...
               </iframe>
@@ -154,8 +170,14 @@ export const Feedbacks = () => {
             <div className="border-t border-gray-100 pt-6">
               <h3 className="font-bold text-black text-sm mb-2">Quer testar um formulário agora?</h3>
               <p className="text-xs text-gray-500 mb-4">
-                Cole abaixo o link do Google Forms (ou de qualquer outro formulário web) para pré-visualizar:
+                Cole abaixo o link do Google Forms para pré-visualizar:
               </p>
+              {errorMessage && (
+                <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg text-red-700 text-xs flex items-center gap-2">
+                  <AlertCircle className="w-4 h-4 shrink-0" />
+                  <span>{errorMessage}</span>
+                </div>
+              )}
               <form onSubmit={handleApplyUrl} className="flex flex-col sm:flex-row gap-2">
                 <label htmlFor="form-url-input" className="sr-only">
                   URL de incorporação do formulário Google Forms

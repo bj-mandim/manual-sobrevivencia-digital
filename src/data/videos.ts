@@ -58,25 +58,25 @@ export const VIDEOS_PROTEJA = {
  */
 export const VIDEOS_GOLPES: Record<string, string> = {
   // 1. Phishing, Smishing e Vishing
-  phishing: '',
+  phishing: 'https://youtu.be/8f3Gvs6UZQA',
   // 2. Sequestro de WhatsApp
   whatsapp: '',
   // 3. Golpe do Pix e Comprovante Falso
-  pix: '',
+  pix: 'https://youtu.be/S2UFe33gGiU',
   // 4. Invasão de Redes Sociais
-  'redes-sociais': '',
+  'redes-sociais': 'https://youtu.be/MXvgQ6rGitM',
   // 5. Falsos Investimentos e Pirâmides
-  investimentos: '',
+  investimentos: 'https://youtu.be/dmUaGGUn4Zw',
   // 6. Falsa Vaga de Emprego / Tarefas
-  emprego: '',
+  emprego: 'https://youtu.be/Btu4qHnUt8w',
   // 7. Loja Virtual Falsa / E-commerce
-  ecommerce: '',
+  ecommerce: 'https://youtu.be/9x8HQKBB1Vs',
   // 8. Falsos Órgãos Públicos (INSS / Gov.br)
-  'orgaos-publicos': '',
+  'orgaos-publicos': 'https://youtu.be/DMYJeqSIV5Q',
   // 9. QR Code Malicioso (Quishing)
-  qrcode: '',
+  qrcode: 'https://youtu.be/SnWfUNtPOg8',
   // 10. Deepfake e Clonagem de Voz por IA
-  deepfake: '',
+  deepfake: 'https://youtu.be/QVMDWems03c',
   // 11. Fake News e Desinformação
   'fake-news': '',
 }
@@ -92,7 +92,7 @@ export const VIDEOS_FUI_VITIMA: Record<string, VideoInfo> = {
     descricao: 'Instruções preliminares importantes para manter a calma, evitar decisões impulsivas e proteger seus dados.',
   },
   phishing: {
-    url: '',
+    url: 'https://youtu.be/8f3Gvs6UZQA',
     titulo: '1. Phishing, SMS ou Ligação Falsa (Falsa Central)',
     descricao: 'Como agir caso tenha atendido ligações de supostos bancos, clicado em links falsos ou fornecido senhas por engano.',
   },
@@ -102,42 +102,42 @@ export const VIDEOS_FUI_VITIMA: Record<string, VideoInfo> = {
     descricao: 'Como desconectar invasores pelo WhatsApp Web, recuperar sua conta via código SMS e alertar contatos para evitar novas vítimas.',
   },
   pix: {
-    url: '',
+    url: 'https://youtu.be/S2UFe33gGiU',
     titulo: '3. Golpe do Pix ou Comprovante Falso',
     descricao: 'Como acionar imediatamente o MED (Mecanismo Especial de Devolução) do Banco Central nas primeiras horas para tentar reaver os valores.',
   },
   'redes-sociais': {
-    url: '',
+    url: 'https://youtu.be/MXvgQ6rGitM',
     titulo: '4. Rede Social Invadida ou Roubada (Instagram / TikTok / Facebook)',
     descricao: 'Procedimentos oficiais de recuperação de perfil, revogação de acessos de criminosos e denúncia de contas usurpadas.',
   },
   investimentos: {
-    url: '',
+    url: 'https://youtu.be/dmUaGGUn4Zw',
     titulo: '5. Falso Investimento ou Pirâmide Financeira',
     descricao: 'Instruções urgentes: não pague taxas para liberação de saque, preserve todas as provas e registre queixa formal na CVM e na polícia.',
   },
   emprego: {
-    url: '',
+    url: 'https://youtu.be/Btu4qHnUt8w',
     titulo: '6. Falsa Vaga de Emprego ou Plataforma de Tarefas',
     descricao: 'Como cessar o contato com falsos recrutadores sem pagar "taxas de exame", proteger seus documentos e denunciar o esquema.',
   },
   ecommerce: {
-    url: '',
+    url: 'https://youtu.be/9x8HQKBB1Vs',
     titulo: '7. Loja Virtual Falsa / Comprei e Não Recebi',
     descricao: 'Como acionar o chargeback com a operadora do seu cartão de crédito, cancelar o cartão exposto e registrar no Procon.',
   },
   'orgaos-publicos': {
-    url: '',
+    url: 'https://youtu.be/DMYJeqSIV5Q',
     titulo: '8. Falso Órgão Público (INSS / Receita Federal / Gov.br)',
     descricao: 'Como verificar pendências diretamente nos portais oficiais .gov.br, blindar sua conta Gov.br e bloquear empréstimos indevidos.',
   },
   qrcode: {
-    url: '',
+    url: 'https://youtu.be/SnWfUNtPOg8',
     titulo: '9. QR Code Malicioso (Quishing)',
     descricao: 'Passos imediatos para fechar páginas maliciosas, verificar extratos bancários e denunciar o código adulterado no local físico.',
   },
   deepfake: {
-    url: '',
+    url: 'https://youtu.be/QVMDWems03c',
     titulo: '10. Deepfake de Voz ou Imagem com Inteligência Artificial',
     descricao: 'Como registrar provas com fé pública (ata notarial), acionar ferramentas de remoção rápida e denunciar na Delegacia Especializada.',
   },
@@ -148,22 +148,22 @@ export const VIDEOS_FUI_VITIMA: Record<string, VideoInfo> = {
   },
   // Aliases para compatibilidade retroativa com seletores
   ligacao: {
-    url: '',
+    url: 'https://youtu.be/8f3Gvs6UZQA',
     titulo: '1. Phishing e Ligação Falsa (Falsa Central)',
     descricao: 'Como agir caso tenha conversado com falsos gerentes bancários ou fornecido dados por telefone.',
   },
   link: {
-    url: '',
+    url: 'https://youtu.be/8f3Gvs6UZQA',
     titulo: '1. Phishing por Link Malicioso ou SMS',
     descricao: 'Passos urgentes de contenção para desinfectar o dispositivo, alterar senhas e revogar permissões.',
   },
   'rede-social': {
-    url: '',
+    url: 'https://youtu.be/MXvgQ6rGitM',
     titulo: '4. Rede Social Invadida ou Roubada',
     descricao: 'Procedimentos oficiais para recuperação de conta invadida e denúncia de perfis usurpados.',
   },
   conta: {
-    url: '',
+    url: 'https://youtu.be/MXvgQ6rGitM',
     titulo: '4. Perdi Acesso a uma Conta Importante',
     descricao: 'Como restabelecer acesso com autenticação forte, recuperar e-mail de recuperação e proteger dados pessoais.',
   },

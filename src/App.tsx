@@ -1,4 +1,4 @@
-import { Routes, Route, useLocation } from 'react-router-dom'
+import { Routes, Route, useLocation, Link, Navigate, useParams } from 'react-router-dom'
 import { useEffect } from 'react'
 import { Navbar } from './components/layout/Navbar'
 import { Footer } from './components/layout/Footer'
@@ -15,6 +15,12 @@ const ScrollToTop = () => {
   const { pathname } = useLocation()
   useEffect(() => { window.scrollTo(0, 0) }, [pathname])
   return null
+}
+
+// Redirecionador para links com /golpe/:slug (compatibilidade singular/plural)
+const GolpeRedirect = () => {
+  const { slug } = useParams<{ slug: string }>()
+  return <Navigate to={`/golpes/${slug ?? ''}`} replace />
 }
 
 // Google Analytics 4 Pageview Tracker (rastreia cada mudança de aba/rota no SPA)
@@ -36,7 +42,7 @@ const AnalyticsTracker = () => {
 
 export default function App() {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen overflow-x-hidden">
       {/* Skip to main content for accessibility (Leitores de tela e navegação por teclado) */}
       <a
         href="#main-content"
@@ -52,6 +58,8 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/golpes" element={<Golpes />} />
           <Route path="/golpes/:slug" element={<GolpeDetalhe />} />
+          <Route path="/golpe/:slug" element={<GolpeRedirect />} />
+          <Route path="/golpe" element={<Navigate to="/golpes" replace />} />
           <Route path="/fui-vitima" element={<FuiVitima />} />
           <Route path="/proteja-se" element={<Proteja />} />
           <Route path="/feedbacks" element={<Feedbacks />} />
@@ -60,11 +68,16 @@ export default function App() {
           <Route
             path="*"
             element={
-              <div className="min-h-screen flex items-center justify-center bg-gray-50">
-                <div className="text-center">
-                  <p className="text-6xl font-display font-bold text-black mb-4">404</p>
-                  <p className="text-gray-500 mb-6">Página não encontrada.</p>
-                  <a href="/" className="btn-success inline-flex">Voltar ao início</a>
+              <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
+                <div className="text-center max-w-md">
+                  <p className="text-6xl sm:text-7xl font-display font-extrabold text-black mb-3">404</p>
+                  <h1 className="text-xl sm:text-2xl font-bold text-gray-800 mb-2">Página não encontrada</h1>
+                  <p className="text-sm sm:text-base text-gray-500 mb-6">
+                    O link que você tentou acessar não existe ou foi movido.
+                  </p>
+                  <Link to="/" className="btn-success inline-flex justify-center">
+                    Voltar ao início
+                  </Link>
                 </div>
               </div>
             }

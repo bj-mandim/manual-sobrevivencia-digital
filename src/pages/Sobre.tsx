@@ -74,7 +74,7 @@ const equipe: MembroEquipe[] = [
     nome: "Beatriz Negrão",
     funcao: "Pesquisa de Engenharia Social & Conteúdo Educativo",
     foto: "/fotos_equipe/foto_beatriz_negrao.jpeg",
-    linkedin: "https://www.linkedin.com/in/beatriz-negrão-braz",
+    linkedin: "https://www.linkedin.com/in/beatriz-negr%C3%A3o-braz",
     instagram: "https://www.instagram.com/bianegraobraz_/",
   },
 ];

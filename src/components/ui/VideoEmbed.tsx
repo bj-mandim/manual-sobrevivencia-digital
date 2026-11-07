@@ -8,32 +8,33 @@ export interface VideoEmbedProps {
 }
 
 /**
- * Converte qualquer formato comum de link do YouTube para o link seguro de embed.
- * Retorna null se a URL for vazia, indefinida ou um placeholder.
+ * Converte qualquer formato comum de link do YouTube para o link seguro de embed Privacy-Enhanced.
+ * Retorna null se a URL for vazia, indefinida, placeholder ou link inválido.
  */
 export const getYouTubeEmbedUrl = (rawUrl?: string): string | null => {
   if (!rawUrl) return null
   const url = rawUrl.trim()
   if (!url || url.toLowerCase().includes('placeholder')) return null
 
-  // Se já for uma URL de embed válida (sem ser placeholder)
-  if (url.includes('youtube.com/embed/')) {
-    return url
+  // Se já for uma URL de embed do YouTube (ex: https://www.youtube.com/embed/saO2Nbjss80)
+  const embedMatch = url.match(/^https?:\/\/(?:www\.)?youtube(?:-nocookie)?\.com\/embed\/([\w-]{11})/i)
+  if (embedMatch && embedMatch[1]) {
+    return `https://www.youtube-nocookie.com/embed/${embedMatch[1]}`
   }
 
-  // Formato: https://youtu.be/<id>
-  const youtuBeMatch = url.match(/youtu\.be\/([\w-]{11})/)
+  // Formato encurtado: https://youtu.be/<id>
+  const youtuBeMatch = url.match(/youtu\.be\/([\w-]{11})/i)
   if (youtuBeMatch && youtuBeMatch[1]) {
-    return `https://www.youtube.com/embed/${youtuBeMatch[1]}`
+    return `https://www.youtube-nocookie.com/embed/${youtuBeMatch[1]}`
   }
 
-  // Formato: https://www.youtube.com/watch?v=<id> ou /shorts/<id> ou /v/<id>
-  const ytMatch = url.match(/(?:youtube\.com\/(?:watch\?(?:.*&)?v=|shorts\/|v\/))([\w-]{11})/)
+  // Formato padrão: https://www.youtube.com/watch?v=<id> ou /shorts/<id> ou /v/<id>
+  const ytMatch = url.match(/(?:youtube\.com\/(?:watch\?(?:.*&)?v=|shorts\/|v\/))([\w-]{11})/i)
   if (ytMatch && ytMatch[1]) {
-    return `https://www.youtube.com/embed/${ytMatch[1]}`
+    return `https://www.youtube-nocookie.com/embed/${ytMatch[1]}`
   }
 
-  return url
+  return null
 }
 
 export const VideoEmbed = ({
@@ -81,7 +82,8 @@ export const VideoEmbed = ({
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen
         loading="lazy"
-        className="absolute inset-0 w-full h-full"
+        referrerPolicy="strict-origin-when-cross-origin"
+        className="absolute inset-0 w-full h-full border-0"
       />
     </div>
   )

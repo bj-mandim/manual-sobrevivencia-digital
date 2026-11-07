@@ -103,9 +103,9 @@ export const Footer = () => {
           </div>
         </div>
 
-        <div className="mt-8 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <div className="mt-8 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
           <p className="text-xs text-gray-500">
-            © 2025 Manual de Sobrevivência Digital — Trabalho de Conclusão de
+            © {new Date().getFullYear()} Manual de Sobrevivência Digital — Trabalho de Conclusão de
             Curso
           </p>
           <p className="text-xs text-gray-500">

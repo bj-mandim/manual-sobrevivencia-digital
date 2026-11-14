@@ -1,6 +1,6 @@
 import { useParams, Link, useNavigate } from 'react-router-dom'
 import { useEffect } from 'react'
-import { ChevronLeft, ChevronRight, AlertTriangle } from 'lucide-react'
+import { ChevronLeft, ChevronRight, AlertTriangle, Link2, ArrowRight, ShieldCheck } from 'lucide-react'
 import { Badge } from '../components/ui/Badge'
 import { VideoEmbed } from '../components/ui/VideoEmbed'
 import { StepTimeline } from '../components/ui/StepTimeline'
@@ -33,12 +33,12 @@ export const GolpeDetalhe = () => {
       <div className="bg-black py-10 px-4 border-b border-white/10">
         <div className="max-w-4xl mx-auto">
           {/* Breadcrumb */}
-          <nav className="flex items-center gap-2 text-xs text-gray-400 mb-5" aria-label="Navegação">
+          <nav className="flex flex-wrap items-center gap-1.5 sm:gap-2 text-xs text-gray-400 mb-5" aria-label="Navegação">
             <Link to="/" className="hover:text-cyan-400 transition-colors">Início</Link>
             <span>/</span>
             <Link to="/golpes" className="hover:text-cyan-400 transition-colors">Golpes</Link>
             <span>/</span>
-            <span className="text-gray-300">{golpe.nome}</span>
+            <span className="text-gray-300 font-medium">{golpe.nome}</span>
           </nav>
 
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
@@ -109,6 +109,79 @@ export const GolpeDetalhe = () => {
             <AlertList items={golpe.comoEvitar} type="success" />
           </section>
         </div>
+
+        {/* Golpes Relacionados / Ancoragem Didática */}
+        {golpe.golpesRelacionados && golpe.golpesRelacionados.length > 0 && (
+          <section className="bg-gradient-to-br from-indigo-950 via-slate-900 to-black text-white rounded-2xl p-6 sm:p-8 border border-indigo-500/30 shadow-xl">
+            <div className="flex items-center gap-2 text-cyan-400 text-xs font-bold uppercase tracking-wider mb-2">
+              <Link2 className="w-4 h-4" />
+              <span>Análise Cruzada e Vetores de Ataque</span>
+            </div>
+            <h2 className="font-display text-xl sm:text-2xl font-extrabold text-white mb-3">
+              Como este golpe se conecta a outros no Manual
+            </h2>
+            <p className="text-gray-300 text-sm sm:text-base mb-6 max-w-2xl">
+              Golpistas não atuam de forma isolada: eles combinam táticas clássicas de engenharia social com a falsificação de instituições respeitadas para aumentar a taxa de sucesso da fraude.
+            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {golpe.golpesRelacionados.map((rel) => (
+                <div
+                  key={rel.slug}
+                  className="bg-white/5 hover:bg-white/10 border border-white/15 rounded-xl p-5 flex flex-col justify-between transition-all group"
+                >
+                  <div>
+                    <div className="flex items-center justify-between gap-2 mb-2">
+                      <span className="text-xs font-bold px-2.5 py-1 rounded-full bg-cyan-400/20 text-cyan-300 border border-cyan-400/30">
+                        Golpe #{rel.id.toString().padStart(2, '0')}
+                      </span>
+                      <span className="text-gray-400 text-xs">Vetor Ancorado</span>
+                    </div>
+                    <h3 className="font-bold text-white text-base mb-2 group-hover:text-cyan-300 transition-colors">
+                      {rel.nome}
+                    </h3>
+                    <p className="text-gray-300 text-xs sm:text-sm leading-relaxed mb-4">
+                      {rel.conexao}
+                    </p>
+                  </div>
+
+                  <Link
+                    to={`/golpes/${rel.slug}`}
+                    className="inline-flex items-center gap-2 text-xs font-bold text-cyan-400 hover:text-cyan-300 pt-3 border-t border-white/10 mt-auto transition-colors"
+                  >
+                    <span>Entender o {rel.nome.split(':')[0]}</span>
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* Dicas Especializadas Adicionais */}
+        {golpe.dicasEspecializadas && golpe.dicasEspecializadas.length > 0 && (
+          <section className="bg-amber-50/70 border border-amber-200/80 rounded-2xl p-6 sm:p-8">
+            <div className="flex items-center gap-2 text-amber-800 text-xs font-bold uppercase tracking-wider mb-2">
+              <ShieldCheck className="w-4 h-4 text-amber-600" />
+              <span>Orientações Aprofundadas dos Especialistas</span>
+            </div>
+            <h2 className="font-display text-xl font-bold text-amber-950 mb-4">
+              Informações Cruciais que Você Precisa Saber
+            </h2>
+            <div className="space-y-3">
+              {golpe.dicasEspecializadas.map((dica, idx) => (
+                <div key={idx} className="flex items-start gap-3 bg-white p-4 rounded-xl border border-amber-100 shadow-sm">
+                  <div className="w-6 h-6 rounded-full bg-amber-500 text-white font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
+                    {idx + 1}
+                  </div>
+                  <p className="text-sm text-gray-800 leading-relaxed">
+                    {dica}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
 
         {/* Statistic */}
         {golpe.estatistica && (

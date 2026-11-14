@@ -11,6 +11,13 @@ export interface Passo {
   descricao: string
 }
 
+export interface GolpeRelacionado {
+  id: number
+  slug: string
+  nome: string
+  conexao: string
+}
+
 export interface Golpe {
   id: number
   slug: string
@@ -24,6 +31,8 @@ export interface Golpe {
   sinaisDeAlerta: string[]
   comoEvitar: string[]
   estatistica?: string
+  golpesRelacionados?: GolpeRelacionado[]
+  dicasEspecializadas?: string[]
 }
 
 export interface Situacao {

@@ -32,8 +32,10 @@ export const Footer = () => {
             <ul className="space-y-2">
               {[
                 { to: "/", label: "Início" },
-                { to: "/golpes", label: "Os 11 Golpes mais perigosos" },
-                { to: "/fui-vitima", label: "Fui Vítima — O que fazer agora" },
+                { to: "/golpes", label: "Os 12 Golpes Catalogados" },
+                { to: "/reconhecer-mensagem", label: "Como Reconhecer Mensagem Falsa" },
+                { to: "/links-legitimos", label: "Links Legítimos & Canais Oficiais" },
+                { to: "/fui-vitima", label: "Fui Vítima — Checklist Imediato" },
                 { to: "/proteja-se", label: "Proteja-se (Dicas por perfil)" },
                 { to: "/feedbacks", label: "Feedbacks & Sugestões" },
                 { to: "/sobre", label: "Sobre o Projeto" },

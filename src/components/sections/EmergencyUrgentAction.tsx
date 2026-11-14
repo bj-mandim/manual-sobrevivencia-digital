@@ -52,7 +52,7 @@ export const EmergencyUrgentAction = () => {
     <section
       id="urgencia-golpe"
       aria-label="Ação emergencial para vítimas de golpes"
-      className="bg-brand-red text-white py-4 px-4 sm:px-6 shadow-lg border-b-2 border-red-800"
+      className="mt-16 bg-brand-red text-white py-4 px-4 sm:px-6 shadow-lg border-b-2 border-red-800 relative z-20"
     >
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">

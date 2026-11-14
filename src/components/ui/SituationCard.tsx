@@ -1,7 +1,7 @@
 import {
   Phone, Link2, CircleDollarSign, MessageCircle, Share2,
   UserX, Briefcase, ScanFace, TrendingUp, ShoppingBag,
-  Building2, QrCode, Newspaper, ShieldAlert, LucideIcon,
+  Building2, QrCode, Newspaper, ShieldAlert, Scale, LucideIcon,
 } from 'lucide-react'
 import { Situacao } from '../../types'
 
@@ -20,6 +20,7 @@ const iconMap: Record<string, LucideIcon> = {
   QrCode,
   Newspaper,
   ShieldAlert,
+  Scale,
 }
 
 interface SituationCardProps {

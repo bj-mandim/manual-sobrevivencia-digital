@@ -89,4 +89,12 @@ export const situacoes: Situacao[] = [
     corIcone: 'text-rose-700',
     golpeSlug: 'fake-news',
   },
+  {
+    id: 'falso-advogado',
+    label: '12. Falso Advogado / Processo e Precatório',
+    iconName: 'Scale',
+    corFundo: 'bg-indigo-100',
+    corIcone: 'text-indigo-700',
+    golpeSlug: 'falso-advogado',
+  },
 ]

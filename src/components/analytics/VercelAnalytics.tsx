@@ -8,15 +8,16 @@ import { useEffect } from 'react'
 export const VercelAnalytics = () => {
   useEffect(() => {
     if (typeof window !== 'undefined' && !window.location.hostname.includes('localhost')) {
-      // Carregamento dinâmico seguro
-      import('@vercel/analytics')
+      // Injeta de forma segura sem quebrar o bundler Vite local
+      const pkg = '@vercel/analytics'
+      import(/* @vite-ignore */ pkg)
         .then((mod) => {
           if (mod && typeof mod.inject === 'function') {
             mod.inject()
           }
         })
         .catch(() => {
-          // Silencioso se o pacote ainda não tiver sido compilado localmente
+          // Silencioso se o pacote não estiver disponível
         })
     }
   }, [])

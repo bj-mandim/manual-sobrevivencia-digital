@@ -10,6 +10,8 @@ import { FuiVitima } from './pages/FuiVitima'
 import { Proteja } from './pages/Proteja'
 import { Sobre } from './pages/Sobre'
 import { Feedbacks } from './pages/Feedbacks'
+import { LinksLegitimos } from './pages/LinksLegitimos'
+import { ReconhecerMensagem } from './pages/ReconhecerMensagem'
 
 // Scroll to top on route change
 const ScrollToTop = () => {
@@ -62,6 +64,10 @@ export default function App() {
           <Route path="/golpes/:slug" element={<GolpeDetalhe />} />
           <Route path="/golpe/:slug" element={<GolpeRedirect />} />
           <Route path="/golpe" element={<Navigate to="/golpes" replace />} />
+          <Route path="/reconhecer-mensagem" element={<ReconhecerMensagem />} />
+          <Route path="/desconfiometro" element={<Navigate to="/reconhecer-mensagem" replace />} />
+          <Route path="/links-legitimos" element={<LinksLegitimos />} />
+          <Route path="/canais-oficiais" element={<Navigate to="/links-legitimos" replace />} />
           <Route path="/fui-vitima" element={<FuiVitima />} />
           <Route path="/proteja-se" element={<Proteja />} />
           <Route path="/feedbacks" element={<Feedbacks />} />

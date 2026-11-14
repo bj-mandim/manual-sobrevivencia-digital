@@ -80,6 +80,8 @@ export const VIDEOS_GOLPES: Record<string, string> = {
   deepfake: 'https://youtu.be/QVMDWems03c',
   // 11. Fake News e Desinformação
   'fake-news': '',
+  // 12. Golpe do Falso Advogado e Precatórios
+  'falso-advogado': '',
 }
 
 /**
@@ -148,6 +150,12 @@ export const VIDEOS_FUI_VITIMA: Record<string, VideoInfo> = {
     descricao:
       'Como checar boatos em agências profissionais de fact-checking, quebrar a cadeia de compartilhamento e agir em caso de difamação.',
     dataLancamento: 'Próxima terça-feira às 18h (10/11)',
+  },
+  'falso-advogado': {
+    url: '',
+    titulo: '12. Golpe do Falso Advogado / Falsas Custas Judiciais',
+    descricao:
+      'Ações imediatas: interrompa qualquer transferência Pix, acione o MED no seu banco, comunique o advogado verdadeiro pelo canal oficial e faça a denúncia na OAB.',
   },
   // Aliases para compatibilidade retroativa com seletores
   ligacao: {

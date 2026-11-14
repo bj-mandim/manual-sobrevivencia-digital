@@ -319,6 +319,57 @@ export const golpes: Golpe[] = [
     ],
     estatistica: 'Mais de 80% dos brasileiros já compartilharam conteúdos desinformativos sem checar a fonte.',
   },
+  {
+    id: 12,
+    slug: 'falso-advogado',
+    nome: 'Golpe do Falso Advogado e Precatórios',
+    descricao: 'Criminosos monitoram processos judiciais reais e usam fotos de advogados legítimos no WhatsApp para cobrar falsas custas de liberação de alvarás e indenizações.',
+    nivelRisco: 'Crítico',
+    categoria: 'financeiro',
+    videoUrl: VIDEOS_GOLPES['falso-advogado'] || '',
+    comoFunciona: [
+      { numero: 1, titulo: 'Garimpagem de dados públicos', descricao: 'Golpistas consultam o Diário de Justiça, Jusbrasil e sistemas públicos de tribunais (PJe, Projudi) para identificar pessoas com processos ganhos, precatórios ou indenizações prestes a serem expedidas.' },
+      { numero: 2, titulo: 'Clonagem da identidade visual do escritório', descricao: 'Criam contas no WhatsApp com a foto do advogado real, nome completo do escritório, número de inscrição na OAB e logotipos copiados da internet para transmitir total autenticidade.' },
+      { numero: 3, titulo: 'Contato com falsa notícia boa', descricao: 'Enviam mensagem à vítima com o número exato do seu processo, informando que a quantia em dinheiro está disponível para saque imediato no banco.' },
+      { numero: 4, titulo: 'Cobrança urgente de "taxas de liberação"', descricao: 'Alegam que para o juiz liberar o alvará é necessário pagar antecipadamente taxas cartorárias, certidões de desoneração tributária ou custas via Pix para a conta de um suposto escrivão ou setor de cálculo.' },
+    ],
+    sinaisDeAlerta: [
+      'Mensagem no WhatsApp vinda de um número desconhecido ou novo alegando ser seu advogado ou escritório',
+      'Cobrança de taxa, custas ou tributo prévio via Pix para "desbloquear" ou "agilizar" o recebimento de alvará judicial',
+      'Chave Pix ou conta de destino em nome de pessoa física desconhecida ou de empresa sem vínculo com o escritório contratado',
+      'Envio de documentos com timbres forjados do Tribunal de Justiça, TRF, Receita Federal ou Ministério da Fazenda',
+      'Pressão extrema com prazos fictícios ("se não pagar até as 16h, o valor será cancelado e voltará aos cofres públicos")',
+      'Recusa em agendar ligação de vídeo ou reunião presencial no escritório físico para tratar do pagamento',
+    ],
+    comoEvitar: [
+      'NUNCA faça transferências ou Pix solicitados por mensagens de WhatsApp sem antes ligar para o telefone fixo ou comparecer ao escritório físico do seu advogado',
+      'Tribunais de Justiça NUNCA exigem pagamento de taxas via Pix direto para liberação de indenizações ou precatórios',
+      'Custas judiciais reais são recolhidas EXCLUSIVAMENTE por guias oficiais emitidas no portal do tribunal (ex: DARE, GRU, GRERJ), e nunca via chave Pix aleatória',
+      'Consulte a situação do profissional no Cadastro Nacional dos Advogados (CNA) oficial da OAB em cna.oab.org.br para verificar telefones e dados cadastrados',
+      'Se o "advogado" disser que mudou de número de urgência, desconfie na hora: ligue no contato antigo que você já possuía arquivado',
+      'Avise o advogado verdadeiro imediatamente: o escritório dele também é vítima de estelionato e falsidade ideológica',
+    ],
+    estatistica: 'Alerta nacional emitido pelo Conselho Federal da OAB e Tribunais de Justiça: fraudes com falsos advogados e precatórios cresceram mais de 400%, vitimando milhares de cidadãos em todo o país.',
+    golpesRelacionados: [
+      {
+        id: 1,
+        slug: 'phishing',
+        nome: 'Golpe #01: Phishing, Smishing e Vishing (Engenharia Social)',
+        conexao: 'O golpe do falso advogado opera como um Smishing (SMS/WhatsApp) e Vishing (ligação ou áudio de alta persuasão) ultra direcionado (Spear Phishing). Os criminosos simulam a formalidade e o vocabulário de um profissional de confiança, usando argumentos técnicos para anular o senso crítico da vítima diante de uma suposta urgência.'
+      },
+      {
+        id: 8,
+        slug: 'orgaos-publicos',
+        nome: 'Golpe #08: Falsificação de Órgãos Públicos e Autoridades',
+        conexao: 'Para dar credibilidade à farsa, a quadrilha falsifica certidões, selos digitais e ofícios com carimbos do Tribunal de Justiça (TJ), Varas do Trabalho, TRF, Receita Federal ou INSS. Eles criam falsas "guias de liberação de alvará" que imitam os sistemas do Poder Judiciário brasileiro.'
+      }
+    ],
+    dicasEspecializadas: [
+      'Como funciona o pagamento real de um processo: quando uma causa é ganha, o valor é depositado em conta judicial pelo banco oficial (Banco do Brasil ou Caixa). As custas do advogado e honorários são combinados em contrato e abatidos na fonte ou pagos mediante recibo formal, NUNCA via pagamento de taxa prévia avulsa pelo WhatsApp.',
+      'Validação de dados: mesmo que o golpista saiba seu nome completo, CPF, nome dos seus pais e número do processo, isso NÃO significa que ele é seu advogado. Esses dados são públicos nos Diários Oficiais da Justiça.',
+      'O que fazer se já pagou: acione imediatamente o seu banco pedindo a abertura do MED (Mecanismo Especial de Devolução), registre um Boletim de Ocorrência na Delegacia Eletrônica e faça uma representação na subseção da OAB da sua cidade.'
+    ]
+  },
 ]
 
 export const golpeBySlug = (slug: string): Golpe | undefined =>

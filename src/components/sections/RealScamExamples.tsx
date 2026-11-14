@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { Smartphone, Mail, MessageSquare, Check, ShieldAlert } from 'lucide-react'
+import { Link } from 'react-router-dom'
+import { Smartphone, Mail, MessageSquare, ShieldAlert, Check, ArrowRight } from 'lucide-react'
 import { ShareWhatsAppButton } from '../ui/ShareWhatsAppButton'
 
 interface ScamExample {
@@ -18,6 +19,32 @@ interface ScamExample {
 }
 
 const examples: ScamExample[] = [
+  {
+    id: 'falso-advogado',
+    title: 'Falso Advogado (Liberação de Alvará e Custas)',
+    category: 'WhatsApp & Engenharia Social Jurídica',
+    channel: 'whatsapp',
+    sender: 'Dr. Roberto Advocacia • +55 (11) 98765-4321',
+    date: 'Hoje, 11:30',
+    messageBody:
+      'Olá, informamos que seu processo judicial nº 0014285-88 teve o alvará de R$ 48.750,00 liberado pelo juiz. Para emissão da certidão de liberação e TED imediata, recolha as custas de R$ 940,00 até as 16h via Pix para a chave: financeiro.cartorio@gmail.com.',
+    redFlags: [
+      {
+        highlight: 'alvará de R$ 48.750,00 liberado',
+        explanation: 'Golpistas monitoram processos públicos no Diário Oficial e Jusbrasil para atrair a vítima com valores reais.',
+      },
+      {
+        highlight: 'recolha as custas de R$ 940,00 até as 16h via Pix',
+        explanation: 'Nenhum tribunal do Brasil cobra custas de alvará via Pix direto! Custas oficiais são recolhidas por guias oficiais do Estado (DARE/GRU).',
+      },
+      {
+        highlight: 'financeiro.cartorio@gmail.com',
+        explanation: 'E-mails gratuitos e chaves Pix de pessoas físicas estranhas são a assinatura do estelionato.',
+      },
+    ],
+    howToReact:
+      'NUNCA transfira dinheiro. Desligue a conversa e ligue para o telefone fixo histórico do seu advogado ou consulte o cna.oab.org.br.',
+  },
   {
     id: 'whatsapp-filho',
     title: 'Golpe do Número Novo (Falso Filho ou Parente)',
@@ -238,14 +265,21 @@ export const RealScamExamples = () => {
               ))}
             </div>
 
-            {/* Ação de Compartilhar no WhatsApp com a Família */}
-            <div className="pt-2 flex flex-col sm:flex-row items-center gap-3">
+            {/* Ação de Compartilhar no WhatsApp com a Família + Link para o Desconfiômetro */}
+            <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
               <ShareWhatsAppButton
                 title={`Alerta de Golpe: ${selectedExample.title}`}
                 textCustom={`⚠️ *Atenção Família*: Vi um exemplo real de golpe (${selectedExample.title}) que criminosos estão usando no WhatsApp e celular. Veja como não cair:`}
                 variant="primary"
                 className="w-full sm:w-auto"
               />
+              <Link
+                to="/reconhecer-mensagem"
+                className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-black hover:bg-gray-800 text-cyan-400 text-xs sm:text-sm font-bold transition-all border border-cyan-400/40 min-h-[44px]"
+              >
+                <span>Abrir Desconfiômetro Completo</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
             </div>
           </div>
         </div>

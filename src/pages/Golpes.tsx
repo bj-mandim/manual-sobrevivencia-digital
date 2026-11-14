@@ -27,10 +27,10 @@ export const Golpes = () => {
         <div className="absolute -top-20 right-1/4 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
         <div className="max-w-7xl mx-auto text-center relative z-10">
           <h1 className="font-display text-3xl sm:text-4xl font-extrabold text-white mb-3">
-            Os 11 Golpes Digitais Mais Perigosos
+            Catálogo dos Golpes Digitais Mais Frequentes
           </h1>
           <p className="text-gray-300 text-base sm:text-lg max-w-2xl mx-auto">
-            Conheça cada ameaça em detalhes: funcionamento, sinais de alerta, prevenção e o módulo especial sobre Fake News.
+            Conheça cada ameaça em detalhes: funcionamento, sinais de alerta, conexões entre vetores, prevenção e como agir de imediato.
           </p>
         </div>
       </div>

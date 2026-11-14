@@ -1475,6 +1475,122 @@ export const fasesPorSituacao: Record<string, FaseContencao[]> = {
       ],
     },
   ],
+  // 12. GOLPE DO FALSO ADVOGADO / FALSAS CUSTAS E PRECATÓRIOS
+  'falso-advogado': [
+    {
+      id: 'adv-fase1',
+      titulo: '1. Interrompa Pagamentos e Acione o MED Bancário Imediatamente',
+      descricao: 'Se você enviou dinheiro para uma chave Pix informada pelo golpista, cada minuto conta.',
+      cor: 'text-red-700',
+      corBg: 'bg-red-50',
+      corBorda: 'border-red-200',
+      corNum: 'bg-brand-red',
+      itens: [
+        {
+          id: 'adv-1',
+          texto: 'NÃO envie nenhum valor adicional, sob qualquer pretexto ou ameaça',
+          complemento: 'Golpistas costumam pedir um segundo ou terceiro Pix alegando que "faltou uma taxa de certidão" ou "o juiz exigiu novo depósito". Pare imediatamente qualquer contato financeiro.',
+        },
+        {
+          id: 'adv-2',
+          texto: 'Acione imediatamente o MED (Mecanismo Especial de Devolução) do Banco Central',
+          complemento: 'No aplicativo do seu banco, acesse o extrato, clique sobre o Pix realizado e selecione "Contestar transação / Relatar fraude / Acionar MED". O banco tem obrigação de bloquear cautelarmente a conta receptora.',
+          link: { label: 'Entenda como funciona o MED no Banco Central', url: 'https://www.bcb.gov.br/estabilidadefinanceira/pagamentosinstantaneos' },
+        },
+        {
+          id: 'adv-3',
+          texto: 'Cancele boletos ou agendamentos de transferências programadas',
+          complemento: 'Confira na sua área de pagamentos agendados no aplicativo do banco se há débitos futuros marcados e exclua-os imediatamente.',
+        },
+        {
+          id: 'adv-4',
+          texto: 'Guarde o comprovante completo do Pix com o ID de Fim a Fim (E2E)',
+          complemento: 'O código de identificação que começa com "E" e tem mais de 30 caracteres é indispensável para a polícia e para o banco rastrearem a transação.',
+        },
+      ],
+    },
+    {
+      id: 'adv-fase2',
+      titulo: '2. Contate seu Advogado Verdadeiro pelos Canais Oficiais',
+      descricao: 'Valide a situação com o profissional real através de telefones fixos ou presenciais.',
+      cor: 'text-amber-700',
+      corBg: 'bg-amber-50',
+      corBorda: 'border-amber-200',
+      corNum: 'bg-brand-amber',
+      itens: [
+        {
+          id: 'adv-5',
+          texto: 'Ligue para o telefone fixo ou compareça ao escritório físico do seu advogado',
+          complemento: 'Não use o número de WhatsApp que te enviou a cobrança. Use os contatos salvos no contrato de honorários original ou no histórico do seu processo.',
+        },
+        {
+          id: 'adv-6',
+          texto: 'Consulte o Cadastro Nacional dos Advogados (CNA) oficial da OAB',
+          complemento: 'Digite o nome do seu advogado ou número da OAB no portal da Ordem para verificar a regularidade e os telefones oficiais vinculados.',
+          link: { label: 'Consulta Oficial de Advogados (CNA / OAB)', url: 'https://cna.oab.org.br' },
+        },
+        {
+          id: 'adv-7',
+          texto: 'Peça para o advogado certificar a tentativa de golpe nos autos do processo',
+          complemento: 'O advogado pode peticionar ao juiz informando a tentativa de fraude para proteger a integridade do processo judicial e prevenir outros clientes do escritório.',
+        },
+      ],
+    },
+    {
+      id: 'adv-fase3',
+      titulo: '3. Preserve Provas e Registre Boletim de Ocorrência',
+      descricao: 'Documente todas as falsificações antes que o criminoso apague a conta ou mensagens.',
+      cor: 'text-cyan-800',
+      corBg: 'bg-cyan-50/70',
+      corBorda: 'border-cyan-200',
+      corNum: 'bg-cyan-600',
+      itens: [
+        {
+          id: 'adv-8',
+          texto: 'Tire prints completos da conversa com o número de WhatsApp do golpista visível',
+          complemento: 'Abra os dados do contato no WhatsApp, tire print do número de telefone com DDD, foto do perfil e capture todo o diálogo, inclusive áudios e comprovantes enviados.',
+        },
+        {
+          id: 'adv-9',
+          texto: 'Salve as falsas certidões e ofícios forjados',
+          complemento: 'Não delete os arquivos PDF ou imagens de falsos documentos com timbres do Tribunal de Justiça, TRF ou Receita Federal. Eles comprovam o crime de falsificação documental.',
+        },
+        {
+          id: 'adv-10',
+          texto: 'Registre Boletim de Ocorrência na Delegacia Eletrônica do seu estado',
+          complemento: 'Indique o crime como Estelionato Eletrônico (Art. 171, § 2º-B do CP) e Falsidade Ideológica. Anexe os comprovantes Pix e os dados da conta que recebeu o dinheiro.',
+          link: { label: 'Encontrar Delegacia Eletrônica do seu Estado (SaferNet)', url: 'https://new.safernet.org.br/content/delegacias-cibercrimes' },
+        },
+      ],
+    },
+    {
+      id: 'adv-fase4',
+      titulo: '4. Denuncie na OAB e Bloqueie Contatos Fraudulentos',
+      descricao: 'Ajude a combater a rede de criminosos e alerte a sua rede de apoio.',
+      cor: 'text-teal-700',
+      corBg: 'bg-teal-50',
+      corBorda: 'border-teal-200',
+      corNum: 'bg-brand-green',
+      itens: [
+        {
+          id: 'adv-11',
+          texto: 'Denuncie o caso à Ouvidoria ou Comissão de Prerrogativas da OAB do seu estado',
+          complemento: 'As seccionais da OAB mantêm forças-tarefa em conjunto com a Polícia Civil para mapear quadrilhas especializadas no golpe do falso advogado.',
+          link: { label: 'Portal Nacional do Conselho Federal da OAB', url: 'https://www.oab.org.br' },
+        },
+        {
+          id: 'adv-12',
+          texto: 'Denuncie o número fraudulento dentro do próprio WhatsApp',
+          complemento: 'Clique nos três pontinhos do contato no WhatsApp → Mais → Denunciar e bloquear.',
+        },
+        {
+          id: 'adv-13',
+          texto: 'Alerte outros familiares envolvidos no mesmo processo ou inventário',
+          complemento: 'Se o processo for de herança, pensão ou causas coletivas, avise parentes para que ninguém faça depósitos ou atenda chamadas de números desconhecidos.',
+        },
+      ],
+    },
+  ],
 }
 
 // Checklist Padrão / Emergencial Geral (para quando nenhuma situação específica for selecionada)

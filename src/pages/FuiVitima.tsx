@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router-dom'
 import { Printer, ExternalLink, CheckSquare, Square, AlertCircle, ArrowLeft, RefreshCw, ShieldAlert, PlayCircle } from 'lucide-react'
 import { SituationCard } from '../components/ui/SituationCard'
 import { VideoEmbed } from '../components/ui/VideoEmbed'
+import { ShareWhatsAppButton } from '../components/ui/ShareWhatsAppButton'
 import { situacoes } from '../data/situacoes'
 import { getFasesPorSituacao } from '../data/contencao'
 import { VIDEOS_FUI_VITIMA, VideoInfo } from '../data/videos'
@@ -91,7 +92,7 @@ export const FuiVitima = () => {
       <div className="hidden print:block text-black p-4 mb-4 border-b-2 border-black">
         <div className="flex items-center justify-between border-b pb-2 mb-3">
           <div>
-            <h1 className="text-xl font-black uppercase tracking-tight">Manual de Sobrevivência Digital</h1>
+            <p className="text-xl font-black uppercase tracking-tight" role="heading" aria-level={2}>Manual de Sobrevivência Digital</p>
             <p className="text-xs font-semibold text-gray-700">
               Protocolo Emergencial de Resposta a Incidentes & Preservação de Direitos
             </p>
@@ -410,16 +411,21 @@ export const FuiVitima = () => {
           </div>
 
           {/* =========================================================================
-              PRINT BUTTON ON SCREEN
+              PRINT AND SHARE BUTTONS ON SCREEN
               ========================================================================= */}
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 no-print">
             <button
               onClick={() => window.print()}
-              className="w-full sm:w-auto flex items-center justify-center gap-2 bg-black hover:bg-neutral-900 text-white font-bold px-7 py-3.5 rounded-xl shadow-sm transition-all focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 border border-white/10"
+              className="w-full sm:w-auto flex items-center justify-center gap-2 bg-black hover:bg-neutral-900 text-white font-bold px-7 py-3.5 rounded-xl shadow-sm transition-all focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 border border-white/10 min-h-[44px]"
             >
               <Printer className="w-5 h-5 text-cyan-400" />
               Imprimir / Salvar Checklist em PDF
             </button>
+            <ShareWhatsAppButton
+              title="Checklist Emergencial: Fui Vítima de Golpe, o que fazer agora"
+              variant="primary"
+              className="w-full sm:w-auto"
+            />
           </div>
         </div>
       </div>

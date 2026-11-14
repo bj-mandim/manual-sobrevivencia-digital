@@ -2,6 +2,7 @@ import { Routes, Route, useLocation, Link, Navigate, useParams } from 'react-rou
 import { useEffect } from 'react'
 import { Navbar } from './components/layout/Navbar'
 import { Footer } from './components/layout/Footer'
+import { VercelAnalytics } from './components/analytics/VercelAnalytics'
 import { Home } from './pages/Home'
 import { Golpes } from './pages/Golpes'
 import { GolpeDetalhe } from './pages/GolpeDetalhe'
@@ -53,6 +54,7 @@ export default function App() {
       <Navbar />
       <ScrollToTop />
       <AnalyticsTracker />
+      <VercelAnalytics />
       <main id="main-content" className="flex-1 focus:outline-none" tabIndex={-1}>
         <Routes>
           <Route path="/" element={<Home />} />

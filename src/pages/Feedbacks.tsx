@@ -63,7 +63,7 @@ export const Feedbacks = () => {
             <div className="w-9 h-9 rounded-lg bg-cyan-50 text-cyan-600 flex items-center justify-center mb-3">
               <Sparkles className="w-5 h-5" />
             </div>
-            <h3 className="font-bold text-black text-sm mb-1">Novos Golpes</h3>
+            <h2 className="font-bold text-black text-sm mb-1">Novos Golpes</h2>
             <p className="text-xs text-gray-500 leading-relaxed">
               Viu um golpe novo que ainda não está listado? Conte para nós para incluirmos nos guias.
             </p>
@@ -73,7 +73,7 @@ export const Feedbacks = () => {
             <div className="w-9 h-9 rounded-lg bg-teal-50 text-brand-green flex items-center justify-center mb-3">
               <CheckCircle2 className="w-5 h-5" />
             </div>
-            <h3 className="font-bold text-black text-sm mb-1">Experiência de Uso</h3>
+            <h2 className="font-bold text-black text-sm mb-1">Experiência de Uso</h2>
             <p className="text-xs text-gray-500 leading-relaxed">
               O checklist foi fácil de usar? As orientações ajudaram a conter o problema a tempo?
             </p>
@@ -83,7 +83,7 @@ export const Feedbacks = () => {
             <div className="w-9 h-9 rounded-lg bg-purple-50 text-purple-600 flex items-center justify-center mb-3">
               <ShieldQuestion className="w-5 h-5" />
             </div>
-            <h3 className="font-bold text-black text-sm mb-1">Dúvidas & Sugestões</h3>
+            <h2 className="font-bold text-black text-sm mb-1">Dúvidas & Sugestões</h2>
             <p className="text-xs text-gray-500 leading-relaxed">
               Tem alguma dúvida ou sugestão de parceria institucional ou acadêmica? Fale conosco.
             </p>
@@ -96,9 +96,9 @@ export const Feedbacks = () => {
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 mb-4 border-b border-gray-100">
               <div className="flex items-center gap-2">
                 <span className="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse" />
-                <span className="text-xs font-bold text-gray-600 uppercase tracking-wider">
+                <h2 className="text-xs font-bold text-gray-700 uppercase tracking-wider">
                   Formulário Oficial de Feedback
-                </span>
+                </h2>
               </div>
               <a
                 href={activeUrl}

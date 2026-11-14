@@ -5,6 +5,7 @@ import { Badge } from '../components/ui/Badge'
 import { VideoEmbed } from '../components/ui/VideoEmbed'
 import { StepTimeline } from '../components/ui/StepTimeline'
 import { AlertList } from '../components/ui/AlertList'
+import { ShareWhatsAppButton } from '../components/ui/ShareWhatsAppButton'
 import { golpeBySlug, golpes } from '../data/golpes'
 import { situacoes } from '../data/situacoes'
 
@@ -40,9 +41,15 @@ export const GolpeDetalhe = () => {
             <span className="text-gray-300">{golpe.nome}</span>
           </nav>
 
-          <div className="flex flex-col sm:flex-row sm:items-center gap-3 mb-4">
-            <Badge nivel={golpe.nivelRisco} />
-            <span className="text-gray-400 text-xs">Golpe #{golpe.id.toString().padStart(2, '0')}</span>
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
+            <div className="flex items-center gap-3">
+              <Badge nivel={golpe.nivelRisco} />
+              <span className="text-gray-400 text-xs">Golpe #{golpe.id.toString().padStart(2, '0')}</span>
+            </div>
+            <ShareWhatsAppButton
+              title={`Golpe: ${golpe.nome}`}
+              variant="compact"
+            />
           </div>
 
           <h1 className="font-display text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white leading-tight mb-3">

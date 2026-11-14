@@ -8,7 +8,7 @@
   }
 
   body {
-    @apply font-sans text-gray-800 bg-white;
+    @apply font-sans text-gray-900 bg-white antialiased;
   }
 
   h1,
@@ -21,11 +21,11 @@
 
 @layer components {
   .btn-danger {
-    @apply flex items-center gap-2 bg-brand-red hover:bg-red-700 text-white font-bold px-5 py-3 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-offset-2;
+    @apply flex items-center gap-2 bg-brand-red hover:bg-red-700 active:bg-red-800 text-white font-bold px-5 py-3 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-offset-2 min-h-[44px];
   }
 
   .btn-success {
-    @apply flex items-center gap-2 bg-black hover:bg-neutral-900 text-cyan-400 border border-cyan-500/40 hover:border-cyan-400 font-bold px-5 py-3 rounded-lg shadow-[0_0_15px_rgba(0,229,255,0.15)] hover:shadow-[0_0_20px_rgba(0,229,255,0.3)] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2;
+    @apply flex items-center gap-2 bg-black hover:bg-neutral-900 text-cyan-400 border border-cyan-500/40 hover:border-cyan-400 font-bold px-5 py-3 rounded-lg shadow-[0_0_15px_rgba(0,229,255,0.15)] hover:shadow-[0_0_20px_rgba(0,229,255,0.3)] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 min-h-[44px];
   }
 
   .section-title {
@@ -47,48 +47,62 @@
   }
 }
 
-/* Print styles for emergency checklist */
+/* =========================================================================
+   ACESSIBILIDADE: PREFERS-REDUCED-MOTION
+   Desliga transições e animações para usuários sensíveis a movimento
+   ========================================================================= */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* =========================================================================
+   ESTILOS DE IMPRESSÃO (Folha de Emergência A4 de Alto Contraste)
+   ========================================================================= */
 @media print {
   @page {
-    size: A4;
-    margin: 12mm 15mm 12mm 15mm;
+    size: A4 portrait;
+    margin: 10mm 12mm 10mm 12mm;
   }
 
-  /* Ocultar elementos de navegação e controles interativos da tela */
+  /* Ocultar navegação, cabeçalhos, rodapés, botões e vídeos */
   header,
   footer,
   nav,
+  iframe,
+  video,
+  button,
   .no-print {
     display: none !important;
   }
 
   body {
-    font-size: 10pt !important;
-    line-height: 1.35 !important;
-    color: #111827 !important;
+    font-size: 9.5pt !important;
+    line-height: 1.3 !important;
+    color: #000000 !important;
     background: #ffffff !important;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
   }
 
-  /* Remove sombras e ajusta bordas para impressão nítida em papel */
+  /* Garante nitidez máxima sem sombras na impressão */
   * {
     box-shadow: none !important;
     text-shadow: none !important;
   }
 
-  /* Previne quebra de blocos no meio da página */
+  /* Evita quebras de caixas essenciais no meio da página */
   .print-avoid-break {
     break-inside: avoid !important;
     page-break-inside: avoid !important;
   }
 
-  .print-break {
-    break-before: page !important;
-    page-break-before: always !important;
-  }
-
-  /* Garante exibição de URLs e elementos de impressão */
   .print-only {
     display: block !important;
   }
@@ -99,6 +113,6 @@
 
   a {
     text-decoration: none !important;
-    color: inherit !important;
+    color: #000000 !important;
   }
 }

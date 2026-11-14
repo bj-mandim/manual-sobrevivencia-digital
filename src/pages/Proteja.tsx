@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ShieldCheck, ArrowRight, CheckCircle, PlayCircle } from "lucide-react";
 import { PerfilProtecao } from "../types";
 import { VideoEmbed } from "../components/ui/VideoEmbed";
+import { ShareWhatsAppButton } from "../components/ui/ShareWhatsAppButton";
 import { VIDEOS_PROTEJA } from "../data/videos";
 
 const perfis: PerfilProtecao[] = [
@@ -78,9 +79,15 @@ export const Proteja = () => {
           <h1 className="font-display text-3xl sm:text-4xl font-extrabold text-white mb-3">
             Proteja-se
           </h1>
-          <p className="text-teal-100 text-base sm:text-lg max-w-2xl mx-auto">
+          <p className="text-teal-100 text-base sm:text-lg max-w-2xl mx-auto mb-4">
             Boas práticas de segurança digital personalizadas para o seu perfil.
           </p>
+          <div className="flex justify-center">
+            <ShareWhatsAppButton
+              title="Guia de Proteção contra Golpes Digitais por Perfil"
+              variant="compact"
+            />
+          </div>
         </div>
       </div>
 

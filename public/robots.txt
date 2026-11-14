@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://manualdesobrevivenciadigital.vercel.app/sitemap.xml

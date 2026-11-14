@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { AlertTriangle, ShieldCheck, Smartphone, Monitor, Share2, CreditCard, Database } from 'lucide-react'
+import { ShareWhatsAppButton } from '../ui/ShareWhatsAppButton'
 
 const channels = [
   { icon: Smartphone, label: 'Celular' },
@@ -94,7 +95,7 @@ export const Hero = () => {
           </div>
 
           {/* CTA buttons */}
-          <div className="flex flex-col sm:flex-row gap-4">
+          <div className="flex flex-col sm:flex-row gap-4 mb-4">
             <Link
               to="/fui-vitima"
               className="btn-danger justify-center sm:justify-start text-sm"
@@ -116,6 +117,13 @@ export const Hero = () => {
                 <span className="font-normal text-xs opacity-80">Quero aprender como me prevenir</span>
               </span>
             </Link>
+          </div>
+
+          <div className="pt-2">
+            <ShareWhatsAppButton
+              title="Manual de Sobrevivência Digital — Guia contra golpes no WhatsApp e Pix"
+              variant="secondary"
+            />
           </div>
         </div>
 
